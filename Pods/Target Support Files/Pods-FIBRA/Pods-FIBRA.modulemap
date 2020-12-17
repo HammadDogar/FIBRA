@@ -1,0 +1,6 @@
+framework module Pods_FIBRA {
+  umbrella header "Pods-FIBRA-umbrella.h"
+
+  export *
+  module * { export * }
+}
