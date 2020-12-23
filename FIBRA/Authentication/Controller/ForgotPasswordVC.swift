@@ -12,12 +12,19 @@ class ForgotPasswordVC: UIViewController {
     
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var emailAddressLabel: UILabel!
+    @IBOutlet weak var btnBackGroundColorView: UIView!
+    @IBOutlet weak var btnForgotPassword: UIButton!
+
 
     var viewModel: AuthenticationViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailAddressLabel.isHidden = true
+        self.btnBackGroundColorView.isHidden = true
+        self.btnForgotPassword.isEnabled = false
+        
+        
         viewModel = AuthenticationViewModel(delegate: self, viewController: self)
         // Do any additional setup after loading the view.
         self.emailTF.addTarget(self, action: #selector(ChangePasswordVC.textFieldDidChange(_:)),
@@ -32,6 +39,15 @@ class ForgotPasswordVC: UIViewController {
             }else{
                 self.emailAddressLabel.isHidden = true
             }
+        }
+        if self.emailTF.text != "" {
+            self.btnBackGroundColorView.isHidden = false
+            self.btnForgotPassword.backgroundColor = UIColor.clear
+            self.btnForgotPassword.isEnabled = true
+        }else{
+            self.btnBackGroundColorView.isHidden = true
+            self.btnForgotPassword.backgroundColor = UIColor.lightGray
+            self.btnForgotPassword.isEnabled = false
         }
     }
     

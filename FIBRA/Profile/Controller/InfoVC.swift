@@ -15,19 +15,26 @@ class InfoVC: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var phoneNoTF: UITextField!
     @IBOutlet weak var emailAdressTF: UITextField!
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var mobileNoLabel: UILabel!
     
+    @IBOutlet weak var btnBackGroundColorView: UIView!
+    @IBOutlet weak var btnSaveChanges: UIButton!
+
+    
     var selectedAttachment: (name: String, extension: String, data: Data)!
     var viewModel: UpdateProfileViewModel!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         self.nameLabel.isHidden = true
         self.emailAddressLabel.isHidden = true
         self.mobileNoLabel.isHidden = true
+        self.btnSaveChanges.isEnabled = false
         
+        self.btnBackGroundColorView.isHidden = true
+
         viewModel = UpdateProfileViewModel(delegate: self, viewController: self)
         setData()
         self.userNameTF.addTarget(self, action: #selector(ChangePasswordVC.textFieldDidChange(_:)), for: .editingChanged)
@@ -57,6 +64,17 @@ class InfoVC: UIViewController {
                 self.emailAddressLabel.isHidden = true
             }
         }
+        if self.userNameTF.text != "" && self.phoneNoTF.text != "" && self.emailAdressTF.text != "" {
+            self.btnBackGroundColorView.isHidden = false
+            self.btnSaveChanges.backgroundColor = UIColor.clear
+            self.btnSaveChanges.isEnabled = true
+
+        }else{
+            self.btnBackGroundColorView.isHidden = true
+            self.btnSaveChanges.backgroundColor = UIColor.lightGray
+            self.btnSaveChanges.isEnabled = false
+
+        }
     }
     
     @IBAction func onBack(_ sender: UIButton) {
@@ -64,15 +82,15 @@ class InfoVC: UIViewController {
     }
     
     @IBAction func onEditPhoto(_ sender: UIButton) {
-        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Choose from Library", style: .default, handler: { (action) in
-            self.chooseFromLibrary(presentFrom: sender)
-        }))
-        alert.addAction(UIAlertAction(title: "Capture", style: .default, handler: { (action) in
-            self.capturePhoto(presentFrom: sender)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: .none))
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "Choose from Library", style: .default, handler: { (action) in
+//            self.chooseFromLibrary(presentFrom: sender)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Capture", style: .default, handler: { (action) in
+//            self.capturePhoto(presentFrom: sender)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: .none))
+//        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func onDeletePhoto(_ sender: UIButton) {
@@ -83,7 +101,7 @@ class InfoVC: UIViewController {
     }
     
     @IBAction func onSaveChangings(_ sender: UIButton) {
-        if isValidInput() {
+        if self.userNameTF.isValidInput() && self.phoneNoTF.isValidInput() {
             SVProgressHUD.show()
             updateProfile()
 
@@ -110,7 +128,7 @@ extension InfoVC: UpdateProfileViewModelDelegate {
         LoginData.shared.fullName = userNameTF.text ?? ""
         LoginData.shared.phone = phoneNoTF.text ?? ""
         LoginData.shared.address = ""
-        LoginData.shared.profileUrl = Global.shared.profileUrl
+        LoginData.shared.profileUrl = ""//Global.shared.profileUrl
         LoginData.shared.saveData()
         self.showAlertView(title: Constants.kSuccessMessage, message: "Profile updated successfully.", successTitle: "OK", successCallback: {
             self.navigationController?.popViewController(animated: true)
@@ -132,13 +150,13 @@ extension InfoVC {
         if emailAdressTF.text != ""{
             self.emailAddressLabel.isHidden = false
         }
-        if LoginData.shared.profileUrl != ""{
-            let url = URL.init(string: WebManager.shared.baseUrl+LoginData.shared.profileUrl)
-            self.profileImageView.kf.indicatorType = .activity
-            self.profileImageView.kf.setImage(with: url)
-        }else{
-            profileImageView.image = UIImage.init(named: "profileGreen")
-        }
+//        if LoginData.shared.profileUrl != ""{
+//            let url = URL.init(string: WebManager.shared.baseUrl+LoginData.shared.profileUrl)
+//            self.profileImageView.kf.indicatorType = .activity
+//            self.profileImageView.kf.setImage(with: url)
+//        }else{
+//            profileImageView.image = UIImage.init(named: "profileGreen")
+//        }
     }
 }
 

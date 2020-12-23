@@ -22,6 +22,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var reTypePasswordLabel: UILabel!
 
+    @IBOutlet weak var btnBackGroundColorView: UIView!
+    @IBOutlet weak var btnRegister: UIButton!
+
     
     var viewModel: AuthenticationViewModel!
     
@@ -32,6 +35,8 @@ class RegisterViewController: UIViewController {
         self.passwordLabel.isHidden = true
         self.reTypePasswordLabel.isHidden = true
 
+        self.btnBackGroundColorView.isHidden = true
+        self.btnRegister.isEnabled = false
         viewModel = AuthenticationViewModel(delegate: self, viewController: self)
         
         
@@ -84,6 +89,18 @@ class RegisterViewController: UIViewController {
 
             }
         }
+        if self.emailText.text != "" && self.mobileText.text != "" && self.passwordText.text != "" && self.confirmPasswordText.text != "" && checkBtn.isSelected{
+            self.btnBackGroundColorView.isHidden = false
+            self.btnRegister.backgroundColor = UIColor.clear
+            self.btnRegister.isEnabled = true
+
+        }else{
+            self.btnBackGroundColorView.isHidden = true
+            self.btnRegister.backgroundColor = UIColor.lightGray
+            self.btnRegister.isEnabled = false
+
+        }
+
     }
     
     
@@ -99,6 +116,7 @@ class RegisterViewController: UIViewController {
         } else{
             sender.isSelected = true
         }
+        self.textFieldDidChange(self.emailText)
     }
     
     @IBAction func onRegister(_ sender: UIButton) {
@@ -125,11 +143,13 @@ extension RegisterViewController {
     func signUp() {
         if isValidInput() {
             SVProgressHUD.show()
-            let param: [String: Any] = ["email": emailText.text ?? "",
-                                        "password": passwordText.text ?? "",
-                                        "phone": mobileText.text ?? "",
-                                        "address": "",
-                                        "fullName": ""]
+            let param: [String: Any] = [
+                "email": emailText.text ?? "",
+                "password": passwordText.text ?? "",
+                "phone": mobileText.text ?? "",
+                "address": "",
+                "fullName": ""
+            ]
             viewModel.register(with: param)
         }
     }

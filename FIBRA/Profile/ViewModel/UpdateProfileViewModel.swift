@@ -23,7 +23,7 @@ class UpdateProfileViewModel: NSObject {
     }
     
     func updateProfile(with param: [String: Any],selectedImage:UIImage) {
-        WebManager.shared.updateProfile(params: param, selectedImage: selectedImage) { (response, error) in
+        WebManager.shared.updateProfile(params: param) { (response, error) in
             var isSuccess = false
             if self.viewController.isValidResponse(response: response, error: error) {
                 isSuccess = true

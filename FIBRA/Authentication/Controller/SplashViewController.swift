@@ -17,7 +17,9 @@ class SplashViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
                 let tabbarVC = TabbarVC.instantiate(fromAppStoryboard: .Tabbar)
                 tabbarVC.modalPresentationStyle = .fullScreen
-                self.present(tabbarVC, animated: true, completion: nil)                
+                tabbarVC.modalTransitionStyle = .crossDissolve
+
+                self.present(tabbarVC, animated: true, completion: nil)
             }
         }else{
             let vc = LoginViewController.instantiate(fromAppStoryboard: .Authentication)

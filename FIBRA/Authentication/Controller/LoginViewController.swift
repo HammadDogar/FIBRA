@@ -16,6 +16,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var btnBackGroundColorView: UIView!
+    @IBOutlet weak var btnLogin: UIButton!
+
 
     var viewModel: AuthenticationViewModel!
     
@@ -24,6 +27,8 @@ class LoginViewController: UIViewController {
         
         self.emailAddressLabel.isHidden = true
         self.passwordLabel.isHidden = true
+        self.btnBackGroundColorView.isHidden = true
+        self.btnLogin.isEnabled = false
         
         userText.text = "hassan@getnada.com"
         passwordText.text = "Abc@123456"
@@ -52,6 +57,15 @@ class LoginViewController: UIViewController {
                 self.passwordLabel.isHidden = true
 
             }
+        }
+        if self.userText.text != "" && self.passwordText.text != ""{
+            self.btnBackGroundColorView.isHidden = false
+            self.btnLogin.backgroundColor = UIColor.clear
+            self.btnLogin.isEnabled = true
+        }else{
+            self.btnBackGroundColorView.isHidden = true
+            self.btnLogin.backgroundColor = UIColor.lightGray
+            self.btnLogin.isEnabled = false
         }
     }
     
@@ -97,6 +111,7 @@ extension LoginViewController: AuthenticationViewModelDelegate {
         UserDefaults.standard.synchronize()
         let tabbarVC = TabbarVC.instantiate(fromAppStoryboard: .Tabbar)
         tabbarVC.modalPresentationStyle = .fullScreen
+        tabbarVC.modalTransitionStyle = .crossDissolve
         self.present(tabbarVC, animated: true, completion: nil)
     }
     

@@ -52,21 +52,23 @@ extension WebManager {
         POSTRequest(url: ApiMethods.changePassword.rawValue, parameters: params, completion: completion)
     }
     
-    func updateProfile(params: Parameters ,selectedImage:UIImage, completion: @escaping RequestCompletion) {
-        PostRequestWithMultipartImage(url: ApiMethods.updateImage.rawValue, selectedImages: selectedImage) { (imgUrl, isSuccess) in
-            if isSuccess{
-                let parameters:[String:Any] = [
-                    "fullName": params["fullName"] as! String,
-                    "phone": params["phone"] as! String,
-                    "address": params["address"] as! String,
-                    "profileUrl": imgUrl
-                ]
-                Global.shared.profileUrl = imgUrl
-                self.POSTRequest(url: ApiMethods.updateProfile.rawValue, parameters: parameters, completion: completion)
-            }else{
-                
-            }
-        }
+    func updateProfile(params: Parameters, completion: @escaping RequestCompletion) {
+        self.POSTRequest(url: ApiMethods.updateProfile.rawValue, parameters: params, completion: completion)
+
+//        PostRequestWithMultipartImage(url: ApiMethods.updateImage.rawValue, selectedImages: selectedImage) { (imgUrl, isSuccess) in
+//            if isSuccess{
+//                let parameters:[String:Any] = [
+//                    "fullName": params["fullName"] as! String,
+//                    "phone": params["phone"] as! String,
+//                    "address": params["address"] as! String,
+//                    "profileUrl": imgUrl
+//                ]
+//                Global.shared.profileUrl = imgUrl
+//                self.POSTRequest(url: ApiMethods.updateProfile.rawValue, parameters: parameters, completion: completion)
+//            }else{
+//
+//            }
+//        }
     }
 }
 

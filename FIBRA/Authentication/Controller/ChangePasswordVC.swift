@@ -20,6 +20,10 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var reTypePasswordLabel: UILabel!
     @IBOutlet weak var btnNewPassword: UIButton!
     @IBOutlet weak var btnReTypePassword: UIButton!
+        
+    @IBOutlet weak var btnBackGroundColorView: UIView!
+    @IBOutlet weak var btnSaveChanges: UIButton!
+
 
     var viewModel: AuthenticationViewModel!
     
@@ -28,6 +32,9 @@ class ChangePasswordVC: UIViewController {
         self.oldPasswordLabel.isHidden = true
         self.newPasswordLabel.isHidden = true
         self.reTypePasswordLabel.isHidden = true
+        self.btnBackGroundColorView.isHidden = true
+        self.btnSaveChanges.isEnabled = false
+        
         viewModel = AuthenticationViewModel(delegate: self, viewController: self)
 
         self.oldPassTF.addTarget(self, action: #selector(ChangePasswordVC.textFieldDidChange(_:)),
@@ -71,6 +78,15 @@ class ChangePasswordVC: UIViewController {
                 self.reTypePasswordLabel.isHidden = true
 
             }
+        }
+        if self.oldPassTF.text != "" && self.newPassTF.text != "" && self.confirmPassTF.text != "" {
+            self.btnBackGroundColorView.isHidden = false
+            self.btnSaveChanges.backgroundColor = UIColor.clear
+            self.btnSaveChanges.isEnabled = true
+        }else{
+            self.btnBackGroundColorView.isHidden = true
+            self.btnSaveChanges.backgroundColor = UIColor.lightGray
+            self.btnSaveChanges.isEnabled = false
         }
     }
     

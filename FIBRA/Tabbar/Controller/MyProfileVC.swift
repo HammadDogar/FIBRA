@@ -20,7 +20,6 @@ class MyProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +41,7 @@ class MyProfileVC: UIViewController {
     @IBAction func onLogout(_ sender: UIButton) {
         let vc = LogoutVC.instantiate(fromAppStoryboard: .Main)
         vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+        self.tabBarController?.present(vc, animated: true, completion: nil)
     }
     
 }
@@ -50,15 +49,15 @@ class MyProfileVC: UIViewController {
 extension MyProfileVC {
     func setData() {
         userNameLbl.text = LoginData.shared.fullName
-        custumerNoLbl.text = "Fibra-User-000-\(LoginData.shared.userId)"
+        custumerNoLbl.text = "Customer No.: \(LoginData.shared.userId)"//"Fibra-User-000-\(LoginData.shared.userId)"
         mobileNumber.text = "Mobile No: \(LoginData.shared.phone)"
         email.text = "Email: \(LoginData.shared.authDict.email)"
-        if LoginData.shared.profileUrl != ""{
-            let url = URL.init(string: WebManager.shared.baseUrl+LoginData.shared.profileUrl)
-            self.userImageView.kf.indicatorType = .activity
-            self.userImageView.kf.setImage(with: url)
-        }else{
-            self.userImageView.image = UIImage.init(named: "profileGreen")
-        }
+//        if LoginData.shared.profileUrl != ""{
+//            let url = URL.init(string: WebManager.shared.baseUrl+LoginData.shared.profileUrl)
+//            self.userImageView.kf.indicatorType = .activity
+//            self.userImageView.kf.setImage(with: url)
+//        }else{
+//            self.userImageView.image = UIImage.init(named: "profileGreen")
+//        }
     }
 }

@@ -15,7 +15,7 @@ class TabbarVC: UITabBarController, UITabBarControllerDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem.title = "My Receipts"
         nvc.tabBarItem.image = UIImage(named: "receiptGray")
-        nvc.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0);
+        nvc.tabBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -6, right: 0);
 
         nvc.setUpAttributes()
         return nvc
@@ -25,9 +25,9 @@ class TabbarVC: UITabBarController, UITabBarControllerDelegate {
         let vc = QRCodeVC.instantiate(fromAppStoryboard: .Tabbar)
         let nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem.title = "My Code"
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 4)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.orange], for: .selected)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
         
-
         nvc.setUpAttributes()
         return nvc
     }()
@@ -37,7 +37,7 @@ class TabbarVC: UITabBarController, UITabBarControllerDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem.title = "My Profile"
         nvc.tabBarItem.image = UIImage(named: "profileGray")
-        nvc.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0);
+        nvc.tabBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -6, right: 0);
 
         nvc.setUpAttributes()
         return nvc
@@ -54,27 +54,30 @@ class TabbarVC: UITabBarController, UITabBarControllerDelegate {
         // remove default border
         tabBar.frame.size.width = self.view.frame.width + 4
         tabBar.frame.origin.x = -2
-        
+
         viewControllers = [vc1, vc2, vc3]
         selectedIndex = 1
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
         UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         tabBar.tintColor = UIColor.init(named: "Base")
         setupMiddleButton()
-    }
-    
 
+    }
 }
 
 extension TabbarVC {
     func setupMiddleButton() {
         let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         var menuButtonFrame = menuButton.frame
-        menuButtonFrame.origin.y = -31
-        menuButtonFrame.origin.x = ((view.bounds.width/2 - menuButtonFrame.size.width/2)+0.5)
+        menuButtonFrame.origin.y = -32
+        menuButtonFrame.origin.x = ((view.bounds.width/2 - menuButtonFrame.size.width/2))
         menuButton.frame = menuButtonFrame
         menuButton.backgroundColor = UIColor(named: "YellowColor")
         menuButton.layer.cornerRadius = menuButtonFrame.height/2
+        menuButton.layer.shadowColor = UIColor.black.cgColor
+        menuButton.layer.shadowRadius = 2
+        menuButton.layer.shadowOpacity = 0.3
+        menuButton.layer.shadowOffset = .zero
         tabBar.addSubview(menuButton)
         menuButton.setImage(UIImage(named: "myCode"), for: .normal)
         menuButton.tintColor = UIColor.white

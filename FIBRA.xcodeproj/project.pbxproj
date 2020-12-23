@@ -39,6 +39,7 @@
 		33BCEE6F2572CAE600E7ECAF /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCEE6E2572CAE600E7ECAF /* ForgotPasswordVC.swift */; };
 		33BCEE742572DCC000E7ECAF /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCEE732572DCC000E7ECAF /* UpdateProfileViewModel.swift */; };
 		D219FB6935DB220988750F92 /* Pods_FIBRA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CBFBF303878C542CED88E8 /* Pods_FIBRA.framework */; };
+		E713EA8625931097006C7734 /* GradientBackGroundOrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E713EA8525931097006C7734 /* GradientBackGroundOrange.swift */; };
 		E773D3FB2589D7D800D6E33A /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3F92589D7D800D6E33A /* ReceiptTableViewCell.swift */; };
 		E773D3FC2589D7D800D6E33A /* ReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E773D3FA2589D7D800D6E33A /* ReceiptTableViewCell.xib */; };
 		E773D3FF2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */; };
@@ -83,6 +84,7 @@
 		33BCEE6E2572CAE600E7ECAF /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		33BCEE732572DCC000E7ECAF /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		4DF306AC22FF6E14C8D886BD /* Pods-FIBRA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIBRA.debug.xcconfig"; path = "Target Support Files/Pods-FIBRA/Pods-FIBRA.debug.xcconfig"; sourceTree = "<group>"; };
+		E713EA8525931097006C7734 /* GradientBackGroundOrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackGroundOrange.swift; sourceTree = "<group>"; };
 		E773D3F92589D7D800D6E33A /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		E773D3FA2589D7D800D6E33A /* ReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiptTableViewCell.xib; sourceTree = "<group>"; };
 		E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,8 +181,9 @@
 		33AD263E25724A310020BA21 /* FIBRA */ = {
 			isa = PBXGroup;
 			children = (
-				3378617D25728BA30032EC6D /* Profile */,
+				E713EA8525931097006C7734 /* GradientBackGroundOrange.swift */,
 				33AD268725724B560020BA21 /* Gradientbackground.swift */,
+				3378617D25728BA30032EC6D /* Profile */,
 				33AD267C25724B310020BA21 /* Tabbar */,
 				33AD266D25724B1D0020BA21 /* Authentication */,
 				33AD263F25724A310020BA21 /* AppDelegate.swift */,
@@ -437,6 +440,7 @@
 				33AD265E25724A6D0020BA21 /* Date+String.swift in Sources */,
 				E7AF523B258B732F00DF905F /* SplashViewController.swift in Sources */,
 				33AD266025724A6D0020BA21 /* WebManager.swift in Sources */,
+				E713EA8625931097006C7734 /* GradientBackGroundOrange.swift in Sources */,
 				33AD267625724B1D0020BA21 /* AuthenticationViewModel.swift in Sources */,
 				33AD268325724B310020BA21 /* ReciptVC.swift in Sources */,
 				33AD267A25724B1D0020BA21 /* LoginData.swift in Sources */,
