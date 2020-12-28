@@ -43,6 +43,16 @@ class AuthenticationViewModel: NSObject {
         }
     }
     
+//    if self.viewController.isValidResponse(response: response, error: error) {
+//        let responseDict = response as! [String: Any]
+//        if let responseData = responseDict["data"] as? [String: Any] {
+//            isSuccess = true
+//            LoginData.shared.authDict = (email: responseData["email"] as! String, password: responseData["password"] as! String)
+//            LoginData.shared.loadData(dict: responseData)
+//            self.delegate?.onSuccess()
+//        }
+//    }
+    
     func register(with param: [String: Any]) {
         WebManager.shared.register(params: param) { (response, error) in
             var isSuccess = false

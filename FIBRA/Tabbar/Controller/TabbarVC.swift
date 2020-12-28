@@ -25,7 +25,7 @@ class TabbarVC: UITabBarController, UITabBarControllerDelegate {
         let vc = QRCodeVC.instantiate(fromAppStoryboard: .Tabbar)
         let nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem.title = "My Code"
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.orange], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "YellowColor")], for: .selected)
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
         
         nvc.setUpAttributes()
@@ -75,9 +75,9 @@ extension TabbarVC {
         menuButton.backgroundColor = UIColor(named: "YellowColor")
         menuButton.layer.cornerRadius = menuButtonFrame.height/2
         menuButton.layer.shadowColor = UIColor.black.cgColor
-        menuButton.layer.shadowRadius = 2
-        menuButton.layer.shadowOpacity = 0.3
-        menuButton.layer.shadowOffset = .zero
+        menuButton.layer.shadowRadius = 3
+        menuButton.layer.shadowOpacity = 0.6
+        menuButton.layer.shadowOffset = CGSize(width: 0.5, height: 1.5)
         tabBar.addSubview(menuButton)
         menuButton.setImage(UIImage(named: "myCode"), for: .normal)
         menuButton.tintColor = UIColor.white
@@ -89,6 +89,7 @@ extension TabbarVC {
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 1
+        
     }
     
 }

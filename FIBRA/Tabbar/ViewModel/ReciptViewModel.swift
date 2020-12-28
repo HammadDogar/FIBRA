@@ -37,18 +37,32 @@ class ReciptViewModel: NSObject {
     func getAllRecipts() {
         WebManager.shared.getAllRecipt(params: [:]) { (response, error) in
             var isSuccess = false
+            var datesCheck:[String] = [String]()
             if self.viewController.isValidResponse(response: response, error: error) {
                 let responseDict = response as! [String: Any]
                 if let responseData = responseDict["data"] as? [[String: Any]] {
                     isSuccess = true
                     self.recipts = responseData.map({Recipt(dict: $0)})
-                    for eachReceipt in self.recipts {
+                   let sorted = self.recipts.sorted { (date1, date2) -> Bool in
+                        date1.createdDate > date2.createdDate
+                    }
+                    for eachReceipt in sorted {
+                       let date = eachReceipt.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)
                         let receiptDate = eachReceipt.createdDate.components(separatedBy: "T").first!
-                        if self.sectionReceipt.keys.contains(receiptDate) {
+                        let key = date?.getPastTime()
+                        if datesCheck.contains(key!){
                             self.sectionReceipt[receiptDate]?.append(eachReceipt)
+
                         }else{
+                            datesCheck.append(key!)
                             self.sectionReceipt[receiptDate] = [eachReceipt]
+
                         }
+//                        if self.sectionReceipt.keys.contains(key!) {
+//                            self.sectionReceipt[key!]?.append(eachReceipt)
+//                        }else{
+//                            self.sectionReceipt[key!] = [eachReceipt]
+//                        }
                     }
                     
                     self.sectionKeys = self.sectionReceipt.keys.sorted(by: { (str1, str2) -> Bool in

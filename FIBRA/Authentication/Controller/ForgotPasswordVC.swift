@@ -15,6 +15,11 @@ class ForgotPasswordVC: UIViewController {
     @IBOutlet weak var btnBackGroundColorView: UIView!
     @IBOutlet weak var btnForgotPassword: UIButton!
 
+    @IBOutlet weak var emailErrorView: UIView!
+    @IBOutlet weak var emailLineView: UIView!
+    @IBOutlet weak var emailValidErrorView: UILabel!
+    @IBOutlet weak var emailValidTopErrorView: UIView!
+
 
     var viewModel: AuthenticationViewModel!
 
@@ -23,6 +28,9 @@ class ForgotPasswordVC: UIViewController {
         self.emailAddressLabel.isHidden = true
         self.btnBackGroundColorView.isHidden = true
         self.btnForgotPassword.isEnabled = false
+        self.emailErrorView.isHidden = true
+        self.emailValidTopErrorView.isHidden = true
+        self.emailValidErrorView.isHidden = true
         
         
         viewModel = AuthenticationViewModel(delegate: self, viewController: self)
@@ -81,17 +89,36 @@ extension ForgotPasswordVC {
         if isValidInput() {
             SVProgressHUD.show()
             viewModel.forgotPassword(with: emailTF.text ?? "")
+        }else{
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.9) {
+                UIView.animate(withDuration: 0.1) {
+                    self.emailErrorView.isHidden = true
+                    self.emailValidTopErrorView.isHidden = true
+                    self.view.layoutIfNeeded()
+                }
+            }
         }
     }
     
     func isValidInput() -> Bool {
+        var isError = true
         if !emailTF.isValidInput() {
-            self.showAlertView(title: "Error", message: "Please enter email.")
-            return false
-        }else if !(emailTF.text?.isValidEmail ?? false) {
-            self.showAlertView(title: "Error", message: "Please enter valid email.")
-            return false
+            self.emailValidTopErrorView.isHidden = false
+            self.emailAddressLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.emailLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+
+//            self.showAlertView(title: "Error", message: "Please enter email.")
+            isError = false
         }
-        return true
+        if !(emailTF.text?.isValidEmail ?? false) {
+            self.emailAddressLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.emailLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+
+//            self.showAlertView(title: "Error", message: "Please enter valid email.")
+            self.emailErrorView.isHidden = false
+            self.emailValidErrorView.isHidden = false
+            isError = false
+        }
+        return isError
     }
 }

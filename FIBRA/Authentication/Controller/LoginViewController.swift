@@ -18,21 +18,40 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var btnBackGroundColorView: UIView!
     @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var btnNewPassword: UIButton!
+
+    @IBOutlet weak var emailValidErrorView: UIView!
+    @IBOutlet weak var emailErrorView: UIView!
+    @IBOutlet weak var passwordErrorView: UIView!
+    @IBOutlet weak var emailLineView: UIView!
+    @IBOutlet weak var passwordLineView: UIView!
+    
+    @IBOutlet weak var passwordValidTopErrorView: UIView!
+    @IBOutlet weak var emailValidTopErrorView: UIView!
+    @IBOutlet weak var passwordValidErrorView: UIView!
 
 
     var viewModel: AuthenticationViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.emailAddressLabel.isHidden = true
-        self.passwordLabel.isHidden = true
-        self.btnBackGroundColorView.isHidden = true
-        self.btnLogin.isEnabled = false
+        self.configureErrorViews()
+        self.btnLogin.backgroundColor = UIColor.clear
+//        self.emailAddressLabel.isHidden = true
+//        self.passwordLabel.isHidden = true
+//        self.btnBackGroundColorView.isHidden = true
+//        self.btnLogin.isEnabled = false
         
         userText.text = "hassan@getnada.com"
         passwordText.text = "Abc@123456"
         
+        self.btnNewPassword.setTitle(" Show", for: .normal)
+        self.btnNewPassword.setTitle(" Hide", for: .selected)
+        
+        
+        self.btnNewPassword.setImage(UIImage(named: "showPassword"), for: .normal)
+        self.btnNewPassword.setImage(UIImage(named: "hidePassword"), for: .selected)
+
         viewModel = AuthenticationViewModel(delegate: self, viewController: self)
         setupView()
         
@@ -42,6 +61,14 @@ class LoginViewController: UIViewController {
                                     for: .editingChanged)
     }
     
+    func configureErrorViews(){
+        self.emailErrorView.isHidden = true
+        self.passwordErrorView.isHidden = true
+        self.emailValidErrorView.isHidden = true
+        self.emailValidTopErrorView.isHidden = true
+        self.passwordValidErrorView.isHidden = true
+        self.passwordValidTopErrorView.isHidden = true
+    }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == self.userText{
@@ -73,6 +100,11 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
+    @IBAction func actionNewPassWordShow(_ sender: UIButton) {
+        self.btnNewPassword.isSelected.toggle()
+        self.passwordText.isSecureTextEntry.toggle()
+    }
+
 
     @IBAction func onLogin(_ sender: UIButton) {
         signIn()
@@ -122,20 +154,56 @@ extension LoginViewController {
         if isValidInput() {
             SVProgressHUD.show()
             viewModel.login(with: userText.text ?? "", password: passwordText.text ?? "")
+        }else{
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.9) {
+                UIView.animate(withDuration: 0.1) {
+                    self.emailErrorView.isHidden = true
+                    self.passwordErrorView.isHidden = true
+                    self.emailValidTopErrorView.isHidden = true
+                    self.passwordValidTopErrorView.isHidden = true
+                    self.view.layoutIfNeeded()
+                }
+            }
         }
     }
     
     func isValidInput() -> Bool {
+        var isError = true
         if !userText.isValidInput() {
-            self.showAlertView(title: "Error", message: "Please enter email.")
-            return false
-        }else if !(userText.text?.isValidEmail ?? false) {
-            self.showAlertView(title: "Error", message: "Please enter valid email.")
-            return false
-        }else if !passwordText.isValidInput() {
-            self.showAlertView(title: Constants.kErrorMessage, message: "Password is required.")
-            return false
+            self.emailErrorView.isHidden = false
+
+//            self.showAlertView(title: "Error", message: "Please enter email.")
+            isError = false
         }
-        return true
+        if !(userText.text?.isValidEmail ?? false) {
+            self.emailValidErrorView.isHidden = false
+            self.emailValidTopErrorView.isHidden = false
+            self.emailAddressLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.emailLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+
+//            self.showAlertView(title: "Error", message: "Please enter valid email.")
+            isError = false
+        }
+        if !passwordText.isValidInput() {
+            self.passwordLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.passwordErrorView.isHidden = false
+            self.passwordValidErrorView.isHidden = false
+
+
+//            self.showAlertView(title: Constants.kErrorMessage, message: "Password is required.")
+            isError = false
+        }
+        if passwordText.text != ""{
+            if !(passwordText.text?.isStrongPassword ?? false) {
+                self.passwordLabel.textColor = UIColor.init(hexString: "#D0021B")
+                self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+                self.passwordValidErrorView.isHidden = false
+                self.passwordValidTopErrorView.isHidden = false
+//                self.showAlertView(title: "Error", message: "Password Must be at least of 8 characters and contains 3 or 4 of the following: Uppercase (A-Z), Lowercase (a-z), Number (0-9), and Special characters (!@#$%^&*)")
+                isError = false
+            }
+        }
+        return isError
     }
 }

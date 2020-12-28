@@ -1,7 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "toppng.com-checked-checkbox-icon-checkbox-ico-1577x1577.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,6 +9,7 @@
       "scale" : "2x"
     },
     {
+      "filename" : "toppng.com-checked-checkbox-icon-checkbox-ico-1577x1577.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

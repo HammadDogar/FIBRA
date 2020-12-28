@@ -23,9 +23,9 @@ class ReciptVC: UIViewController {
         viewModel = ReciptViewModel(delegate: self, viewController: self)
         viewModel.getAllRecipts()
         self.tableView.rowHeight = 85.0
-        // Do any additional setup after loading the view.
+
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        self.tableView.addSubview(refreshControl) // not required when using UITableViewController
+        self.tableView.addSubview(refreshControl)
      }
 
      @objc func refresh(_ sender: AnyObject) {
@@ -34,9 +34,9 @@ class ReciptVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.tintColor = UIColor.init(named: "Base")
         self.navigationController?.isNavigationBarHidden = true
     }
-
 }
 
 extension ReciptVC: ReciptViewModelDelegate {

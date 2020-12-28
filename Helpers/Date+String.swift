@@ -49,79 +49,80 @@ extension Date {
         return abs(dateComponents.day ?? 0)
     }
     
-    func getPastTime() -> String{
-            let now = Date()
-            var secondsAgo = Int(now.timeIntervalSince(self))
-            if secondsAgo < 0 {
-                secondsAgo = secondsAgo * (-1)
-            }
-            
-            let minute = 60
-            let hour = 60 * minute
-            let day = 24 * hour
-            let week = 7 * day
-            let month = 30 * week
-            print("month",month)
-        print("seconds:",secondsAgo)
-        if secondsAgo < day {
-            return "Today"
-        } else if secondsAgo < week {
-            return "This Week"
-        } else {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM"
-            //            formatter.locale = Locale(identifier: "en_US")
-            let strDate: String = formatter.string(from: self)
-            return strDate
-        }
-    }
+    func getPastTime() -> String
 //    {
-//        let now = Date()
-//        var secondsAgo = Int(now.timeIntervalSince(self))
-//        if secondsAgo < 0 {
-//            secondsAgo = secondsAgo * (-1)
-//        }
+//            let now = Date()
+//            var secondsAgo = Int(now.timeIntervalSince(self))
+//            if secondsAgo < 0 {
+//                secondsAgo = secondsAgo * (-1)
+//            }
 //
-//        let minute = 60
-//        let hour = 60 * minute
-//        let day = 24 * hour
-//        let week = 7 * day
-//
-//        if secondsAgo < minute  {
-//            if secondsAgo < 2{
-//                return "just now"
-//            }else{
-//                return "\(secondsAgo) secs ago"
-//            }
-//        } else if secondsAgo < hour {
-//            let min = secondsAgo/minute
-//            if min == 1{
-//                return "\(min) min ago"
-//            }else{
-//                return "\(min) mins ago"
-//            }
-//        } else if secondsAgo < day {
-//            let hr = secondsAgo/hour
-//            if hr == 1{
-//                return "\(hr) hr ago"
-//            } else {
-//                return "\(hr) hrs ago"
-//            }
+//            let minute = 60
+//            let hour = 60 * minute
+//            let day = 24 * hour
+//            let week = 7 * day
+//            let month = 30 * week
+//            print("month",month)
+//        print("seconds:",secondsAgo)
+//        if secondsAgo < day {
+//            return "Today"
 //        } else if secondsAgo < week {
-//            let day = secondsAgo/day
-//            if day == 1{
-//                return "\(day) day ago"
-//            }else{
-//                return "\(day) days ago"
-//            }
+//            return "This Week"
 //        } else {
 //            let formatter = DateFormatter()
-//            formatter.dateFormat = "MM/dd/yyyy"
+//            formatter.dateFormat = "MMMM"
 //            //            formatter.locale = Locale(identifier: "en_US")
 //            let strDate: String = formatter.string(from: self)
 //            return strDate
 //        }
 //    }
+    {
+        let now = Date()
+        var secondsAgo = Int(now.timeIntervalSince(self))
+        if secondsAgo < 0 {
+            secondsAgo = secondsAgo * (-1)
+        }
+
+        let minute = 60
+        let hour = 60 * minute
+        let day = 24 * hour
+        let week = 7 * day
+
+        if secondsAgo < minute  {
+            if secondsAgo < 2{
+                return "Today"
+            }else{
+                return "Today"
+            }
+        } else if secondsAgo < hour {
+            let min = secondsAgo/minute
+            if min == 1{
+                return "Today"
+            }else{
+                return "Today"
+            }
+        } else if secondsAgo < day {
+            let hr = secondsAgo/hour
+            if hr == 1{
+                return "Today"
+            } else {
+                return "Today"
+            }
+        } else if secondsAgo < week {
+            let day = secondsAgo/day
+            if day == 1{
+                return "Yesterday"
+            }else{
+                return "This Week"
+            }
+        } else {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM yyyy"
+            //            formatter.locale = Locale(identifier: "en_US")
+            let strDate: String = formatter.string(from: self)
+            return strDate
+        }
+    }
     
 }
 

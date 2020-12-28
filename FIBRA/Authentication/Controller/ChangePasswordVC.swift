@@ -49,10 +49,10 @@ class ChangePasswordVC: UIViewController {
         self.btnReTypePassword.setTitle(" Show", for: .normal)
         self.btnReTypePassword.setTitle(" Hide", for: .selected)
         
-        self.btnNewPassword.setImage(UIImage(named: "showPassword"), for: .normal)
-        self.btnNewPassword.setImage(UIImage(named: "hidePassword"), for: .selected)
-        self.btnReTypePassword.setImage(UIImage(named: "showPassword"), for: .normal)
-        self.btnReTypePassword.setImage(UIImage(named: "hidePassword"), for: .selected)
+        self.btnNewPassword.setImage(UIImage(named: "showPassword1"), for: .normal)
+        self.btnNewPassword.setImage(UIImage(named: "hidePassword1"), for: .selected)
+        self.btnReTypePassword.setImage(UIImage(named: "showPassword1"), for: .normal)
+        self.btnReTypePassword.setImage(UIImage(named: "hidePassword1"), for: .selected)
 
         
     }
@@ -96,9 +96,11 @@ class ChangePasswordVC: UIViewController {
     
     @IBAction func onChangePassword(_ sender: UIButton) {
         if isValidInput() {
-            let param: [String: Any] = ["oldPassword": oldPassTF.text ?? "",
-                                        "password": newPassTF.text ?? "",
-                                        "confirmPassword": confirmPassTF.text ?? ""]
+            let param: [String: Any] = [
+                "oldPassword": oldPassTF.text ?? "",
+                "password": newPassTF.text ?? "",
+                "confirmPassword": confirmPassTF.text ?? ""
+            ]
             viewModel.changePassword(with: param)
         }
     }

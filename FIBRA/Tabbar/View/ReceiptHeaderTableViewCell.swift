@@ -28,19 +28,7 @@ class ReceiptHeaderTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: sectionDate)
         print(date?.getPastTime())
-        if Calendar.current.isDateInToday(date!){
-            self.lblSectionDate.text = "Today"
-        }else{
-            if Calendar.current.isDate(date!, equalTo: today, toGranularity: .month){
-                self.lblSectionDate.text = "This Week"
-            }else{
-                self.lblSectionDate.text = "\(date?.getPastTime() ?? sectionDate)"
-
-            }
-
-        }
-
-
+        self.lblSectionDate.text = "\(date?.getPastTime() ?? sectionDate)"
     }
     
 }

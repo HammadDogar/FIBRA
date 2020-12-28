@@ -111,9 +111,9 @@ class InfoVC: UIViewController {
         let param: [String: Any] = [
             "fullName": userNameTF.text ?? "",
             "phone": phoneNoTF.text ?? "",
-            "address": "",
+            "address": "-",
         ]
-        viewModel.updateProfile(with: param, selectedImage: self.profileImageView.image!)
+        viewModel.updateProfile(with: param, selectedImage: UIImage.init())
     }
 }
 

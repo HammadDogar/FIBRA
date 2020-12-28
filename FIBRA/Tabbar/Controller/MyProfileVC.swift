@@ -24,6 +24,8 @@ class MyProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.tintColor = UIColor.init(named: "Base")
+
         setData()
         self.navigationController?.isNavigationBarHidden = true
     }
