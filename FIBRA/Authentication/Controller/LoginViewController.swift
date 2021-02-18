@@ -29,6 +29,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordValidTopErrorView: UIView!
     @IBOutlet weak var emailValidTopErrorView: UIView!
     @IBOutlet weak var passwordValidErrorView: UIView!
+    @IBOutlet weak var apiErrorView: UIView!
+    @IBOutlet weak var apiErrorLabel: UILabel!
+
 
 
     var viewModel: AuthenticationViewModel!
@@ -68,6 +71,7 @@ class LoginViewController: UIViewController {
         self.emailValidTopErrorView.isHidden = true
         self.passwordValidErrorView.isHidden = true
         self.passwordValidTopErrorView.isHidden = true
+        self.apiErrorView.isHidden = true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -116,6 +120,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onRegister(_ sender: UIButton) {
+        
         let vc = RegisterViewController.instantiate(fromAppStoryboard: .Authentication)
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -134,11 +139,25 @@ extension LoginViewController {
 extension LoginViewController: AuthenticationViewModelDelegate {
     func onFaild(with error: String) {
         SVProgressHUD.dismiss()
-        self.showAlertView(title: Constants.kErrorMessage, message: error)
+        self.view.isUserInteractionEnabled = true
+        self.apiErrorView.isHidden = false
+
+        if error == Constants.kSomethingWrong{
+            self.apiErrorLabel.text = "Email or Password is Invalid"
+            self.emailAddressLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.emailLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.passwordLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+        }else{
+            self.apiErrorLabel.text = "\(error)"
+        }
+//        self.showAlertView(title: Constants.kErrorMessage, message: error)
     }
     
     func onSuccess() {
         SVProgressHUD.dismiss()
+        self.apiErrorView.isHidden = true
+        self.view.isUserInteractionEnabled = true
         UserDefaults.standard.set(true, forKey: "loginKey")
         UserDefaults.standard.synchronize()
         let tabbarVC = TabbarVC.instantiate(fromAppStoryboard: .Tabbar)
@@ -147,23 +166,33 @@ extension LoginViewController: AuthenticationViewModelDelegate {
         self.present(tabbarVC, animated: true, completion: nil)
     }
     
+    
+    
 }
 
 extension LoginViewController {
     func signIn() {
         if isValidInput() {
-            SVProgressHUD.show()
-            viewModel.login(with: userText.text ?? "", password: passwordText.text ?? "")
-        }else{
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.9) {
-                UIView.animate(withDuration: 0.1) {
-                    self.emailErrorView.isHidden = true
-                    self.passwordErrorView.isHidden = true
-                    self.emailValidTopErrorView.isHidden = true
-                    self.passwordValidTopErrorView.isHidden = true
-                    self.view.layoutIfNeeded()
-                }
+            if BReachability.isConnectedToNetwork(){
+                SVProgressHUD.show()
+                self.view.isUserInteractionEnabled = false
+                viewModel.login(with: userText.text ?? "", password: passwordText.text ?? "")
+                
+                
+            }else{
+                self.apiErrorLabel.text = "The internet connection appears to be offline."
+                self.apiErrorView.isHidden = false
             }
+        }else{
+//            DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+//                UIView.animate(withDuration: 0.1) {
+//                    self.emailErrorView.isHidden = true
+//                    self.passwordErrorView.isHidden = true
+//                    self.emailValidTopErrorView.isHidden = true
+//                    self.passwordValidTopErrorView.isHidden = true
+//                    self.view.layoutIfNeeded()
+//                }
+//            }
         }
     }
     
@@ -174,27 +203,42 @@ extension LoginViewController {
 
 //            self.showAlertView(title: "Error", message: "Please enter email.")
             isError = false
-        }
-        if !(userText.text?.isValidEmail ?? false) {
-            self.emailValidErrorView.isHidden = false
-            self.emailValidTopErrorView.isHidden = false
-            self.emailAddressLabel.textColor = UIColor.init(hexString: "#D0021B")
-            self.emailLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+        }else{
+            self.emailErrorView.isHidden = true
 
-//            self.showAlertView(title: "Error", message: "Please enter valid email.")
-            isError = false
+        }
+        if userText.isValidInput(){
+            if !(userText.text?.isValidEmail ?? false) {
+                self.emailValidErrorView.isHidden = false
+                self.emailValidTopErrorView.isHidden = false
+                self.emailAddressLabel.textColor = UIColor.init(hexString: "#D0021B")
+                self.emailLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+                
+                //            self.showAlertView(title: "Error", message: "Please enter valid email.")
+                isError = false
+            }else{
+                self.emailValidErrorView.isHidden = true
+                self.emailValidTopErrorView.isHidden = true
+                self.emailAddressLabel.textColor = UIColor.init(named: "YellowColor")
+                self.emailLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
+            }            
         }
         if !passwordText.isValidInput() {
             self.passwordLabel.textColor = UIColor.init(hexString: "#D0021B")
             self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
             self.passwordErrorView.isHidden = false
             self.passwordValidErrorView.isHidden = false
-
-
 //            self.showAlertView(title: Constants.kErrorMessage, message: "Password is required.")
             isError = false
+        }else{
+            self.passwordErrorView.isHidden = true
+            self.passwordValidErrorView.isHidden = true
+            self.passwordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
         }
-        if passwordText.text != ""{
+        if passwordText.isValidInput(){
             if !(passwordText.text?.isStrongPassword ?? false) {
                 self.passwordLabel.textColor = UIColor.init(hexString: "#D0021B")
                 self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
@@ -202,6 +246,11 @@ extension LoginViewController {
                 self.passwordValidTopErrorView.isHidden = false
 //                self.showAlertView(title: "Error", message: "Password Must be at least of 8 characters and contains 3 or 4 of the following: Uppercase (A-Z), Lowercase (a-z), Number (0-9), and Special characters (!@#$%^&*)")
                 isError = false
+            }else{
+                self.passwordValidErrorView.isHidden = true
+                self.passwordValidTopErrorView.isHidden = true
+                self.passwordLabel.textColor = UIColor.init(named: "YellowColor")
+                self.passwordLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
             }
         }
         return isError

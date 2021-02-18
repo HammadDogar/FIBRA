@@ -20,6 +20,8 @@ class Recipt: NSObject {
     var vendorName = ""
     var creationDate = Date()
     
+    
+    
     init(dict: [String: Any]) {
         transactionId = dict["transactionId"] as? Int ?? 0
         venderId = dict["venderId"] as? Int ?? 0
@@ -39,9 +41,6 @@ class Recipt: NSObject {
             }else{
                 self.creationDate = Date()
             }
-//            let dateFormator = DateFormatter()
-//            dateFormator.dateFormat = "MM/dd/yyyy"
-//            createdDate = dateFormator.string(from: creationDate)
         }
     }
     

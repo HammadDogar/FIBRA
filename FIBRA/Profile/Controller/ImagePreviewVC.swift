@@ -18,21 +18,22 @@ class ImagePreviewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicatorView.color = .gray
-        activityIndicatorView.isHidden = false
+//        activityIndicatorView.color = .gray
+        activityIndicatorView.isHidden = true
         // Do any additional setup after loading the view.
         if let url = URL(string: urlString) {
             webView.navigationDelegate = self
-            activityIndicatorView.startAnimating()
+            SVProgressHUD.show()
+//            activityIndicatorView.startAnimating()
             webView.load(URLRequest(url: url))
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        SVProgressHUD.dismiss()
-        activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
+        SVProgressHUD.dismiss()
+//        activityIndicatorView.stopAnimating()
+//        activityIndicatorView.isHidden = true
 
 
     }
@@ -52,17 +53,17 @@ class ImagePreviewVC: UIViewController {
 
 extension ImagePreviewVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        SVProgressHUD.dismiss()
-        activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
+        SVProgressHUD.dismiss()
+//        activityIndicatorView.stopAnimating()
+//        activityIndicatorView.isHidden = true
 
 
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-//        SVProgressHUD.dismiss()
-        activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
+        SVProgressHUD.dismiss()
+//        activityIndicatorView.stopAnimating()
+//        activityIndicatorView.isHidden = true
 
 
     }

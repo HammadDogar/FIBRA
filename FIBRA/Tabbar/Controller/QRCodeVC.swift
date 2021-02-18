@@ -15,18 +15,20 @@ class QRCodeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0),NSAttributedString.Key.foregroundColor: UIColor.orange]
+        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0),NSAttributedString.Key.foregroundColor: UIColor.init(named: "YellowColor")]
         UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .selected)
 
-        qrImageView.set(urlString: "http://fibraapi.imedhealth.us\(LoginData.shared.qrCodeUrl)", placeholder: "")
+        
         self.fibraUserID.text = "Fibra-User-000-\(LoginData.shared.userId)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0),NSAttributedString.Key.foregroundColor: UIColor.init(named: "YellowColor")]
-        tabBarController?.tabBar.tintColor = UIColor.orange
+        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0),NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#EFB243")]
+        tabBarController?.tabBar.tintColor = UIColor.init(named: "YellowColor")
         self.navigationController?.isNavigationBarHidden = true
+        print("http://fibraapi.imedhealth.us\(LoginData.shared.qrCodeUrl)")
+        qrImageView.set(urlString: "http://fibraapi.imedhealth.us\(LoginData.shared.qrCodeUrl)", placeholder: "")
     }
     
     @IBAction func actionShare(_ sender: Any)

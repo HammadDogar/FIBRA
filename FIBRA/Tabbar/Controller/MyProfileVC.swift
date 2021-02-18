@@ -17,7 +17,8 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var custumerNoLbl: UILabel!
     @IBOutlet weak var mobileNumber: UILabel!
     @IBOutlet weak var email: UILabel!
-    
+    @IBOutlet weak var updatedView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -25,7 +26,15 @@ class MyProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.tintColor = UIColor.init(named: "Base")
-
+        if Global.shared.updatedStatus{
+            Global.shared.updatedStatus = false
+            self.updatedView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now()+6) {
+                self.updatedView.isHidden = true
+            }
+        }else{
+            self.updatedView.isHidden = true
+        }
         setData()
         self.navigationController?.isNavigationBarHidden = true
     }

@@ -51,7 +51,7 @@ extension UIViewController {
     
     func isValidResponse(response: Any?, error: Error?) -> Bool{
         guard let response = response else {
-            showAlertView(title: "Error", message: error?.localizedDescription ?? "")
+//            showAlertView(title: "Error", message: error?.localizedDescription ?? "")
             return false
         }
         if let responseDict = response as? [String: Any] {
@@ -61,7 +61,8 @@ extension UIViewController {
                         if message.lowercased() == "success" {
                             return true
                         }else {
-                            showAlertView(title: "Error", message: message)
+                            return false
+//                            showAlertView(title: "Error", message: message)
                         }
                     }
                     return false
@@ -182,8 +183,10 @@ extension String {
     }
     
     var isStrongPassword: Bool {
+        let passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}"
+
         let passwordRegex = "^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$"
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passRegex)
         return passwordTest.evaluate(with: self)
     }
 }

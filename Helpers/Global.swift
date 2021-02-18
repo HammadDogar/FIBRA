@@ -18,4 +18,5 @@ class Global {
         
     }
     var profileUrl = ""
+    var updatedStatus = false
 }

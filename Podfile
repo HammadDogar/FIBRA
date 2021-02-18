@@ -12,4 +12,10 @@ target 'FIBRA' do
   pod 'SVProgressHUD'
   pod 'IQKeyboardManager'
 
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
+  
+  
 end

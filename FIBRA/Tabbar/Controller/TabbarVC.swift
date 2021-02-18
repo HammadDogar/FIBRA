@@ -10,6 +10,7 @@ import UIKit
 
 class TabbarVC: UITabBarController, UITabBarControllerDelegate {
     
+    var currentIndex = 1
     lazy var vc1: UINavigationController = {
         let vc = ReciptVC.instantiate(fromAppStoryboard: .Tabbar)
         let nvc = UINavigationController(rootViewController: vc)
@@ -56,7 +57,7 @@ class TabbarVC: UITabBarController, UITabBarControllerDelegate {
         tabBar.frame.origin.x = -2
 
         viewControllers = [vc1, vc2, vc3]
-        selectedIndex = 1
+        selectedIndex = currentIndex
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
         UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         tabBar.tintColor = UIColor.init(named: "Base")
@@ -83,12 +84,21 @@ extension TabbarVC {
         menuButton.tintColor = UIColor.white
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
         view.layoutIfNeeded()
+        
     }
-
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController)
+//    {
+//        if tabBarController.selectedIndex == 1
+//        {
+//            tabBarController.navigationController?.popToRootViewController(animated: false)
+//        }
+//    }
     // MARK: - Actions
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 1
+        
+        
         
     }
     

@@ -25,15 +25,40 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var btnSaveChanges: UIButton!
 
 
+    @IBOutlet weak var oldErrorView: UIView!
+    @IBOutlet weak var newPasswordView: UIView!
+    @IBOutlet weak var reTypePasswordView: UIView!
+    @IBOutlet weak var BothPasswordView: UIView!
+    @IBOutlet weak var validPasswordView: UIView!
+    @IBOutlet weak var formatPasswordView: UIView!
+    @IBOutlet weak var validPasswordViewHeightConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var oldErrorLineView: UIView!
+    @IBOutlet weak var newPasswordLineView: UIView!
+    @IBOutlet weak var reTypePasswordLineView: UIView!
+    @IBOutlet weak var apiErrorView: UIView!
+    @IBOutlet weak var apiErrorLabel: UILabel!
+
+
     var viewModel: AuthenticationViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.apiErrorView.isHidden = true
         self.oldPasswordLabel.isHidden = true
         self.newPasswordLabel.isHidden = true
         self.reTypePasswordLabel.isHidden = true
         self.btnBackGroundColorView.isHidden = true
         self.btnSaveChanges.isEnabled = false
+        
+        self.oldErrorView.isHidden = true
+        self.newPasswordView.isHidden = true
+        self.reTypePasswordView.isHidden = true
+        self.validPasswordView.isHidden = true
+        self.formatPasswordView.isHidden = true
+        self.BothPasswordView.isHidden = true
+        self.validPasswordViewHeightConstraint.constant = 0
+
         
         viewModel = AuthenticationViewModel(delegate: self, viewController: self)
 
@@ -101,54 +126,138 @@ class ChangePasswordVC: UIViewController {
                 "password": newPassTF.text ?? "",
                 "confirmPassword": confirmPassTF.text ?? ""
             ]
-            viewModel.changePassword(with: param)
+            if BReachability.isConnectedToNetwork(){
+                SVProgressHUD.show()
+                self.view.isUserInteractionEnabled = false
+                viewModel.changePassword(with: param)
+            }else{
+                self.apiErrorLabel.text = "The internet connection appears to be offline."
+                self.apiErrorView.isHidden = false
+                
+            }
         }
     }
+    
     @IBAction func actionNewPassWordShow(_ sender: UIButton) {
         self.btnNewPassword.isSelected.toggle()
         self.newPassTF.isSecureTextEntry.toggle()
     }
+    
     @IBAction func actionReTypePassWordShow(_ sender: UIButton) {
         self.confirmPassTF.isSecureTextEntry.toggle()
         self.btnReTypePassword.isSelected.toggle()
-
-    }
-    
+    }    
 }
 
 extension ChangePasswordVC: AuthenticationViewModelDelegate {
     func onFaild(with error: String) {
         SVProgressHUD.dismiss()
-        self.showAlertView(title: Constants.kErrorMessage, message: error)
+        self.view.isUserInteractionEnabled = true
+        self.apiErrorView.isHidden = false
+        if Constants.kSomethingWrong == error{
+            self.apiErrorLabel.text = "Old Password is wrong."
+        }else{
+            self.apiErrorLabel.text = "\(error)"
+        }
+//        self.showAlertView(title: Constants.kErrorMessage, message: error)
     }
     
     func onSuccess() {
-        SVProgressHUD.dismiss()
-        self.showAlertView(title: Constants.kSuccessMessage, message: "Password updated successfully.", successTitle: "OK", successCallback: {
+        self.apiErrorView.isHidden = true
+        self.view.isUserInteractionEnabled = true
+
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            SVProgressHUD.dismiss()
             let vc = LoginViewController.instantiate(fromAppStoryboard: .Authentication)
             let navigationController = UINavigationController(rootViewController: vc)
             UIApplication.shared.windows.first?.rootViewController = navigationController
             UIApplication.shared.windows.first?.makeKeyAndVisible()
-        })
+        }
+        
+//        self.showAlertView(title: Constants.kSuccessMessage, message: "Password updated successfully.", successTitle: "OK", successCallback: {
+//            let vc = LoginViewController.instantiate(fromAppStoryboard: .Authentication)
+//            let navigationController = UINavigationController(rootViewController: vc)
+//            UIApplication.shared.windows.first?.rootViewController = navigationController
+//            UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        })
     }
     
 }
 
 extension ChangePasswordVC {
     func isValidInput() -> Bool {
+        var isError = true
         if !oldPassTF.isValidInput() {
-            self.showAlertView(title: "Error", message: "Please enter old password")
-            return false
-        }else if !newPassTF.isValidInput() {
-            self.showAlertView(title: "Error", message: "Please enter new password")
-            return false
-        }else if !(newPassTF.text?.isStrongPassword ?? false) {
-            self.showAlertView(title: "Error", message: "Password Must be at least of 8 characters and contains 3 or 4 of the following: Uppercase (A-Z), Lowercase (a-z), Number (0-9), and Special characters (!@#$%^&*)")
-        }else if confirmPassTF.text != newPassTF.text {
-            self.showAlertView(title: "Error", message: "Passwords do no match.")
-            return false
+            self.oldErrorView.isHidden = false
+            self.oldErrorLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.oldPasswordLabel.textColor = UIColor.init(hexString: "#D0021B")
+
+//            self.showAlertView(title: "Error", message: "Please enter old password")
+            isError = false
+        }else{
+            self.oldErrorView.isHidden = true
+            self.oldPasswordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.oldErrorLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
         }
-        return true
+        if !(oldPassTF.text?.isStrongPassword ?? false) {
+            self.oldErrorLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.oldPasswordLabel.textColor = UIColor.init(hexString: "#D0021B")
+
+            isError = false
+        }else{
+            self.oldPasswordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.oldErrorLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+        }
+        if !newPassTF.isValidInput() {
+            self.newPasswordView.isHidden = false
+            self.newPasswordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.newPasswordLabel.textColor = UIColor.init(hexString: "#D0021B")
+
+
+//            self.showAlertView(title: "Error", message: "Please enter new password")
+            isError = false
+        }else{
+            self.newPasswordView.isHidden = true
+            self.newPasswordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.newPasswordLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
+        }
+        if !(newPassTF.text?.isStrongPassword ?? false) {
+            self.newPasswordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.newPasswordLabel.textColor = UIColor.init(hexString: "#D0021B")
+
+            self.formatPasswordView.isHidden = false
+            self.validPasswordView.isHidden = false
+            self.validPasswordViewHeightConstraint.constant = 30
+//            self.showAlertView(title: "Error", message: "Password Must be at least of 8 characters and contains 3 or 4 of the following: Uppercase (A-Z), Lowercase (a-z), Number (0-9), and Special characters (!@#$%^&*)")
+            isError = false
+        }else{
+            self.formatPasswordView.isHidden = true
+            self.validPasswordView.isHidden = true
+            self.validPasswordViewHeightConstraint.constant = 0
+            self.newPasswordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.newPasswordLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
+        }
+        if confirmPassTF.text != newPassTF.text {
+            self.newPasswordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.reTypePasswordLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.newPasswordLabel.textColor = UIColor.init(hexString: "#D0021B")
+            self.reTypePasswordLabel.textColor = UIColor.init(hexString: "#D0021B")
+
+            self.BothPasswordView.isHidden = false
+//            self.showAlertView(title: "Error", message: "Passwords do no match.")
+            isError = false
+        }else{
+            self.BothPasswordView.isHidden = true
+            self.newPasswordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.newPasswordLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+            self.reTypePasswordLabel.textColor = UIColor.init(named: "YellowColor")
+            self.reTypePasswordLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
+        }
+        return isError
     }
 }
 

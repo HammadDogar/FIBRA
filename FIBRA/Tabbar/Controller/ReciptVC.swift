@@ -10,18 +10,34 @@ import UIKit
 import SVProgressHUD
 
 class ReciptVC: UIViewController {
-
+    
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var transactionId:Int = 0
+    
+//    var totalIndex:Int = 0
+    
     var viewModel: ReciptViewModel!
     var refreshControl = UIRefreshControl()
+    
+    var shouldPerfoamNotificationAction = false
+    
+    
+    @IBOutlet weak var apiErrorView: UIView!
+    @IBOutlet weak var apiErrorLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "ReceiptTableViewCell", bundle: nil), forCellReuseIdentifier: "ReceiptTableViewCell")
         viewModel = ReciptViewModel(delegate: self, viewController: self)
-        viewModel.getAllRecipts()
+        if BReachability.isConnectedToNetwork(){
+            self.apiErrorView.isHidden = true
+
+        }else{
+            self.apiErrorLabel.text = "The internet connection appears to be offline."
+            self.apiErrorView.isHidden = false
+        }
         self.tableView.rowHeight = 85.0
 
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -29,13 +45,23 @@ class ReciptVC: UIViewController {
      }
 
      @objc func refresh(_ sender: AnyObject) {
-        viewModel.getAllRecipts()
+        if BReachability.isConnectedToNetwork(){
+            self.apiErrorView.isHidden = true
+            viewModel.getAllRecipts()
+
+        }else{
+            self.refreshControl.endRefreshing()
+            self.apiErrorLabel.text = "Unable to Refresh, Internet connection appears to be offline."
+            self.apiErrorView.isHidden = false
+        }
      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.tintColor = UIColor.init(named: "Base")
         self.navigationController?.isNavigationBarHidden = true
+        
+        viewModel.getAllRecipts()
     }
 }
 
@@ -44,12 +70,17 @@ extension ReciptVC: ReciptViewModelDelegate {
         self.refreshControl.endRefreshing()
         tableView.reloadData()
         errorLbl.isHidden = viewModel.totalRecipts > 0 ? true : false
+        
+        if shouldPerfoamNotificationAction {
+            getImageIndex(transactionId:transactionId)
+            shouldPerfoamNotificationAction = false
+        }
     }
     
     func onFaild(with error: String) {
         SVProgressHUD.dismiss()
         self.refreshControl.endRefreshing()
-        self.showAlertView(title: Constants.kErrorMessage, message: error)
+//        self.showAlertView(title: Constants.kErrorMessage, message: error)
     }
 }
 
@@ -62,6 +93,9 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return viewModel.totalRecipts
         let key = viewModel.sectionKeys[section]
+        
+//        totalIndex = (viewModel.sectionReceipt[key]?.count)!
+        
         return (viewModel.sectionReceipt[key]?.count)!
 
     }
@@ -76,9 +110,6 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "ReceiptHeaderTableViewCell") as! ReceiptHeaderTableViewCell
             
             let key = viewModel.sectionKeys[section]
-//            let year = (key.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("yyyy")))!
-//            let monthAndDay = (key.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("d MMM")))!
-
             headerCell.configure(sectionDate: "\(key)")
             return headerCell.contentView
         }
@@ -87,30 +118,54 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReceiptTableViewCell", for: indexPath) as! ReceiptTableViewCell
+//
+//        for i in (0...totalIndex-1).reversed(){
+//            let recipt = viewModel.recipt(at: i)
+//            let key = viewModel.sectionKeys[indexPath.section]
+//            let item = (viewModel.sectionReceipt[key]?[i])
+//            cell.titleLbl.text = item?.vendorName ?? ""
+//            cell.qrNumberLbl.text = "\(item?.netAmount ?? 0)"
+//
+//            let year = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("yyyy"))
+//            let monthAndDay = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("d MMM"))
+//
+//            let attributedString = NSMutableAttributedString(string: "\(monthAndDay ?? "")", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .regular), .foregroundColor: UIColor(named: "Base") ?? .green])
+//
+//            let dateString = NSMutableAttributedString(string: "\n\(year ?? "")", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .regular), .foregroundColor: UIColor(named: "DarkGray") ?? .darkGray])
+//            attributedString.append(dateString)
+//
+//            cell.dateLbl.attributedText = attributedString
+//            print("\(attributedString)")
+//            return cell
+//        }
+//        return cell
+        
         let recipt = viewModel.recipt(at: indexPath.row)
         let key = viewModel.sectionKeys[indexPath.section]
         let item = (viewModel.sectionReceipt[key]?[indexPath.row])
         cell.titleLbl.text = item?.vendorName ?? ""
         cell.qrNumberLbl.text = "\(item?.netAmount ?? 0)"
-        
+
+
         let year = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("yyyy"))
         let monthAndDay = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("d MMM"))
-        
+
         let attributedString = NSMutableAttributedString(string: "\(monthAndDay ?? "")", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .regular), .foregroundColor: UIColor(named: "Base") ?? .green])
-    
+
         let dateString = NSMutableAttributedString(string: "\n\(year ?? "")", attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .regular), .foregroundColor: UIColor(named: "DarkGray") ?? .darkGray])
         attributedString.append(dateString)
-        
+
         cell.dateLbl.attributedText = attributedString
         print("\(attributedString)")
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // create func get first index image from this
         let recipt = viewModel.recipt(at: indexPath.row)
         let key = viewModel.sectionKeys[indexPath.section]
         let item = (viewModel.sectionReceipt[key]?[indexPath.row])
-
         let vc = ImagePreviewVC.instantiate(fromAppStoryboard: .Main)
         vc.urlString = "http://\(item?.receiptUrl ?? "")"
         self.navigationController?.pushViewController(vc, animated: true)
@@ -119,5 +174,24 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 94
     }
-
+    func getImageIndex(transactionId:Int) {
+        var reciptUrl = ""
+        if viewModel != nil{
+            
+            for i in 0...viewModel.recipts.count-1{
+                if viewModel.recipts[i].transactionId == transactionId{
+                    reciptUrl = viewModel.recipts[i].receiptUrl
+                }
+            }
+            
+            //let key = viewModel.sectionKeys[0]
+            //let item = (viewModel.sectionReceipt[key]?[0])
+            let vc = ImagePreviewVC.instantiate(fromAppStoryboard: .Main)
+            vc.urlString = "http://\(reciptUrl)"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else{
+            shouldPerfoamNotificationAction = true
+        }
+    }
 }

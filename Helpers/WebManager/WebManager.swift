@@ -54,7 +54,10 @@ extension WebManager {
     
     func updateProfile(params: Parameters, completion: @escaping RequestCompletion) {
         self.POSTRequest(url: ApiMethods.updateProfile.rawValue, parameters: params, completion: completion)
-
+        
+    }
+    
+            
 //        PostRequestWithMultipartImage(url: ApiMethods.updateImage.rawValue, selectedImages: selectedImage) { (imgUrl, isSuccess) in
 //            if isSuccess{
 //                let parameters:[String:Any] = [
@@ -69,7 +72,7 @@ extension WebManager {
 //
 //            }
 //        }
-    }
+    
 }
 
 //MARK: Recipt

@@ -15,19 +15,31 @@ class InfoVC: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var phoneNoTF: UITextField!
     @IBOutlet weak var emailAdressTF: UITextField!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var mobileNoLabel: UILabel!
     
     @IBOutlet weak var btnBackGroundColorView: UIView!
     @IBOutlet weak var btnSaveChanges: UIButton!
+    
+    @IBOutlet weak var nameErrorView: UIView!
+    @IBOutlet weak var mobileNoErrorView: UIView!
+
+    @IBOutlet weak var nameErrorLineView: UIView!
+    @IBOutlet weak var mobileNoErrorLineView: UIView!
+
+    @IBOutlet weak var apiErrorView: UIView!
+    @IBOutlet weak var apiErrorLabel: UILabel!
+
 
     
     var selectedAttachment: (name: String, extension: String, data: Data)!
     var viewModel: UpdateProfileViewModel!
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        self.apiErrorView.isHidden = true
         self.nameLabel.isHidden = true
         self.emailAddressLabel.isHidden = true
         self.mobileNoLabel.isHidden = true
@@ -35,6 +47,8 @@ class InfoVC: UIViewController {
         
         self.btnBackGroundColorView.isHidden = true
 
+        self.nameErrorView.isHidden = true
+        self.mobileNoErrorView.isHidden = true
         viewModel = UpdateProfileViewModel(delegate: self, viewController: self)
         setData()
         self.userNameTF.addTarget(self, action: #selector(ChangePasswordVC.textFieldDidChange(_:)), for: .editingChanged)
@@ -101,10 +115,9 @@ class InfoVC: UIViewController {
     }
     
     @IBAction func onSaveChangings(_ sender: UIButton) {
-        if self.userNameTF.isValidInput() && self.phoneNoTF.isValidInput() {
+        if isValidInput(){//self.userNameTF.isValidInput() && self.phoneNoTF.isValidInput() {
             SVProgressHUD.show()
             updateProfile()
-
         }
     }
     func updateProfile(){
@@ -113,6 +126,8 @@ class InfoVC: UIViewController {
             "phone": phoneNoTF.text ?? "",
             "address": "-",
         ]
+        self.view.isUserInteractionEnabled = false
+
         viewModel.updateProfile(with: param, selectedImage: UIImage.init())
     }
 }
@@ -120,19 +135,31 @@ class InfoVC: UIViewController {
 extension InfoVC: UpdateProfileViewModelDelegate {
     func onFaild(with error: String) {
         SVProgressHUD.dismiss()
-        self.showAlertView(title: Constants.kErrorMessage, message: error)
+        self.view.isUserInteractionEnabled = true
+
+        if error.count < 50{
+            self.apiErrorLabel.text = "\(error)"
+            self.apiErrorView.isHidden = false
+        }else{
+            self.apiErrorLabel.text = "Server is not responding, try again"
+            self.apiErrorView.isHidden = false
+        }
+//        self.showAlertView(title: Constants.kErrorMessage, message: error)
     }
     
     func onSuccess() {
         SVProgressHUD.dismiss()
+        self.apiErrorView.isHidden = true
+        self.view.isUserInteractionEnabled = true
         LoginData.shared.fullName = userNameTF.text ?? ""
         LoginData.shared.phone = phoneNoTF.text ?? ""
         LoginData.shared.address = ""
         LoginData.shared.profileUrl = ""//Global.shared.profileUrl
         LoginData.shared.saveData()
-        self.showAlertView(title: Constants.kSuccessMessage, message: "Profile updated successfully.", successTitle: "OK", successCallback: {
+        Global.shared.updatedStatus = true
+//        self.showAlertView(title: Constants.kSuccessMessage, message: "Profile updated successfully.", successTitle: "OK", successCallback: {
             self.navigationController?.popViewController(animated: true)
-        })
+//        })
     }
 }
 
@@ -162,11 +189,31 @@ extension InfoVC {
 
 extension InfoVC {
     func isValidInput() -> Bool {
-//        if !userNameTF.isValidInput() {
+        var isError = true
+        if !userNameTF.isValidInput() {
+            self.nameErrorView.isHidden = false
+            self.nameErrorLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.nameLabel.textColor = UIColor.init(hexString: "#D0021B")
+
 //            self.showAlertView(title: "Error", message: "Please enter userName")
-//            return false
-//        }
-        return true
+            isError = false
+        }else{
+            self.nameErrorView.isHidden = true
+            self.nameErrorLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+
+
+        }
+        if !phoneNoTF.isValidInput(){
+            self.mobileNoLabel.textColor = UIColor.init(hexString: "#D0021B")
+
+            self.mobileNoErrorLineView.backgroundColor = UIColor.init(hexString: "#D0021B")
+            self.mobileNoErrorView.isHidden = false
+            isError = false
+        }else{
+            self.mobileNoErrorView.isHidden = true
+            self.mobileNoErrorLineView.backgroundColor = UIColor.init(hexString: "#D2D2D2")
+        }
+        return isError
     }
 }
 

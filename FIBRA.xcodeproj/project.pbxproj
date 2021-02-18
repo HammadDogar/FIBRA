@@ -43,8 +43,10 @@
 		E773D3FB2589D7D800D6E33A /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3F92589D7D800D6E33A /* ReceiptTableViewCell.swift */; };
 		E773D3FC2589D7D800D6E33A /* ReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E773D3FA2589D7D800D6E33A /* ReceiptTableViewCell.xib */; };
 		E773D3FF2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */; };
+		E77459FC259E0C8C0039A318 /* Breachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77459FB259E0C8C0039A318 /* Breachability.swift */; };
 		E7AF523B258B732F00DF905F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF523A258B732F00DF905F /* SplashViewController.swift */; };
 		E7EFA033258A240C00D24B83 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFA032258A240C00D24B83 /* Global.swift */; };
+		E7F5BDCC25DA96FF0054F8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F5BDCB25DA96FF0054F8C2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,8 +90,11 @@
 		E773D3F92589D7D800D6E33A /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		E773D3FA2589D7D800D6E33A /* ReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiptTableViewCell.xib; sourceTree = "<group>"; };
 		E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E77459FB259E0C8C0039A318 /* Breachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breachability.swift; sourceTree = "<group>"; };
 		E7AF523A258B732F00DF905F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E7EFA032258A240C00D24B83 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		E7F5BDCB25DA96FF0054F8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E7F5BDD525DA9FC20054F8C2 /* FIBRA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIBRA.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				3378619825729F650032EC6D /* TabBarShape.swift */,
+				E77459FB259E0C8C0039A318 /* Breachability.swift */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -181,12 +187,15 @@
 		33AD263E25724A310020BA21 /* FIBRA */ = {
 			isa = PBXGroup;
 			children = (
+				E7F5BDD525DA9FC20054F8C2 /* FIBRA.entitlements */,
 				E713EA8525931097006C7734 /* GradientBackGroundOrange.swift */,
 				33AD268725724B560020BA21 /* Gradientbackground.swift */,
+				E7F5BDCB25DA96FF0054F8C2 /* GoogleService-Info.plist */,
+				33AD263F25724A310020BA21 /* AppDelegate.swift */,
 				3378617D25728BA30032EC6D /* Profile */,
 				33AD267C25724B310020BA21 /* Tabbar */,
 				33AD266D25724B1D0020BA21 /* Authentication */,
-				33AD263F25724A310020BA21 /* AppDelegate.swift */,
+				33BCEE6E2572CAE600E7ECAF /* ForgotPasswordVC.swift */,
 				33AD264825724A320020BA21 /* Assets.xcassets */,
 				33AD264A25724A320020BA21 /* LaunchScreen.storyboard */,
 				3378617A25728B6D0032EC6D /* Main.storyboard */,
@@ -242,7 +251,6 @@
 				33AD267125724B1D0020BA21 /* ChangePasswordVC.swift */,
 				33AD267225724B1D0020BA21 /* LoginViewController.swift */,
 				33AD267325724B1D0020BA21 /* RegisterViewController.swift */,
-				33BCEE6E2572CAE600E7ECAF /* ForgotPasswordVC.swift */,
 				E7AF523A258B732F00DF905F /* SplashViewController.swift */,
 			);
 			path = Controller;
@@ -377,6 +385,7 @@
 				33AD264925724A320020BA21 /* Assets.xcassets in Resources */,
 				E773D3FC2589D7D800D6E33A /* ReceiptTableViewCell.xib in Resources */,
 				33AD269425724B600020BA21 /* Tabbar.storyboard in Resources */,
+				E7F5BDCC25DA96FF0054F8C2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E773D3FB2589D7D800D6E33A /* ReceiptTableViewCell.swift in Sources */,
+				E77459FC259E0C8C0039A318 /* Breachability.swift in Sources */,
 				33AD267825724B1D0020BA21 /* LoginViewController.swift in Sources */,
 				33AD265D25724A6D0020BA21 /* Extensions.swift in Sources */,
 				3378618C25728F030032EC6D /* ReciptCell.swift in Sources */,
@@ -599,6 +609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FIBRA/FIBRA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7WZAUD3ADC;
@@ -608,7 +619,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.FIBRA.FIBRA;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.fibra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -622,6 +633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FIBRA/FIBRA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7WZAUD3ADC;
@@ -631,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.FIBRA.FIBRA;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.fibra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

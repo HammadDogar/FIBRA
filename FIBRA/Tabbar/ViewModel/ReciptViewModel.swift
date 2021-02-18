@@ -52,27 +52,18 @@ class ReciptViewModel: NSObject {
                         let key = date?.getPastTime()
                         if datesCheck.contains(key!){
                             self.sectionReceipt[receiptDate]?.append(eachReceipt)
-
                         }else{
                             datesCheck.append(key!)
                             self.sectionReceipt[receiptDate] = [eachReceipt]
-
                         }
-//                        if self.sectionReceipt.keys.contains(key!) {
-//                            self.sectionReceipt[key!]?.append(eachReceipt)
-//                        }else{
-//                            self.sectionReceipt[key!] = [eachReceipt]
-//                        }
                     }
                     
                     self.sectionKeys = self.sectionReceipt.keys.sorted(by: { (str1, str2) -> Bool in
                         str1 > str2
                     })
-                    
                     for (key, value) in self.sectionReceipt{
-                        self.sectionReceipt[key] = value.reversed()
+                        //self.sectionReceipt[key] = value.reversed()
                     }
-//                    self.recipts.sort{$0.createdDate > $1.createdDate}
                     self.delegate?.onSuccess()
                 }
             }else if !isSuccess {
