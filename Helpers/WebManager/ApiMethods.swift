@@ -16,6 +16,7 @@ enum ApiMethods: String {
     case recipt = "Transaction/GetAllTransactions"
     case updateProfile = "Users/UpdateUserProfile"
     case updateImage = "Users/UploadFile"
+    case ReadRecipt = "Transaction/ReadTransaction"
 
 }
 

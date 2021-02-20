@@ -83,6 +83,19 @@
                                     <constraint firstAttribute="height" constant="15" id="grM-1O-uyc"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redDot" translatesAutoresizingMaskIntoConstraints="NO" id="jBp-B0-QS5">
+                                <rect key="frame" x="4" y="13" width="15" height="15"/>
+                                <color key="tintColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="4lS-GF-UcI"/>
+                                    <constraint firstAttribute="width" constant="15" id="m7d-iy-Mfr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius1">
+                                        <real key="value" value="7.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -95,6 +108,8 @@
                             <constraint firstAttribute="bottom" secondItem="sby-6Y-3kI" secondAttribute="bottom" constant="15" id="gaU-kg-CDD"/>
                             <constraint firstItem="Cpz-Pu-rI4" firstAttribute="leading" secondItem="v9J-dA-aUB" secondAttribute="trailing" constant="15" id="iqg-oh-fBh"/>
                             <constraint firstItem="HO5-Ja-xcO" firstAttribute="centerY" secondItem="sby-6Y-3kI" secondAttribute="centerY" id="kcF-oF-RSh"/>
+                            <constraint firstItem="jBp-B0-QS5" firstAttribute="top" secondItem="F9V-la-QAa" secondAttribute="top" constant="13" id="rYe-Zk-lAH"/>
+                            <constraint firstItem="jBp-B0-QS5" firstAttribute="leading" secondItem="F9V-la-QAa" secondAttribute="leading" constant="4" id="zi1-dd-dV1"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
@@ -113,12 +128,14 @@
             <connections>
                 <outlet property="dateLbl" destination="jVo-I2-z50" id="phP-SF-z0j"/>
                 <outlet property="qrNumberLbl" destination="v9J-dA-aUB" id="W4l-7g-LTd"/>
+                <outlet property="redDotImage" destination="jBp-B0-QS5" id="3ab-s5-KIn"/>
                 <outlet property="titleLbl" destination="HO5-Ja-xcO" id="XLf-dY-OfU"/>
             </connections>
             <point key="canvasLocation" x="556.52173913043487" y="46.875"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="redDot" width="86.666664123535156" height="86.666664123535156"/>
         <image name="rightArrow" width="50" height="50"/>
     </resources>
 </document>

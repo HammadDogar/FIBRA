@@ -13,6 +13,8 @@ class ImagePreviewVC: UIViewController {
     
     @IBOutlet var webView: WKWebView!
     
+    var transactionId = 0
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     var urlString: String!
     
@@ -27,6 +29,68 @@ class ImagePreviewVC: UIViewController {
 //            activityIndicatorView.startAnimating()
             webView.load(URLRequest(url: url))
         }
+        self.ReadTransaction()
+        
+        
+    }
+    
+    func ReadTransaction(){
+        var task:URLSessionDataTask?
+        let url = "http://fibraapi.imedhealth.us/api/\(ApiMethods.ReadRecipt.rawValue)?transactionId=\(transactionId)"
+        let urlString = URL(string: url)
+        
+        let parameter:[String:Any] = [:]
+        
+//        let parameter = ["transactionId":transactionId] as! [String:Any]
+    
+        var request = URLRequest(url: urlString!)
+        
+        request.httpMethod = "POST"
+        
+        print(transactionId)
+        print(parameter)
+        
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameter, options: [])
+        }
+        catch{
+            print("error")
+        }
+//        print(request.httpBody)
+        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        
+//        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+//        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        
+        task = URLSession.shared.dataTask(with: request){(data,response,error) in
+            if let error = error{
+                print(error)
+                
+            }
+             guard let data = data else{
+                return
+            }
+            print(data)
+            
+            
+            do{
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any]{
+                    print(json)
+                    
+                    if let jsonData = json["status"]{
+                        if jsonData as! Int == 1{
+                            print("Successfull")
+                        }
+                        print("Status code \(jsonData)")
+                    }
+                }
+            }
+            catch{
+                print("Error")
+            }
+            
+        }
+        task?.resume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

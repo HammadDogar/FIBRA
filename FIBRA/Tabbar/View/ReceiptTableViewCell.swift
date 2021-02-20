@@ -9,6 +9,7 @@ import UIKit
 
 class ReceiptTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var redDotImage: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var qrNumberLbl: UILabel!

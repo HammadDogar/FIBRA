@@ -18,6 +18,8 @@ class Recipt: NSObject {
     var receiptUrl = ""
     var userName = ""
     var vendorName = ""
+    //chnaged from int to bool
+    var isRead = false
     var creationDate = Date()
     
     
@@ -32,6 +34,7 @@ class Recipt: NSObject {
         receiptUrl = dict["receiptUrl"] as? String ?? ""
         userName = dict["userName"] as? String ?? ""
         vendorName = dict["vendorName"] as? String ?? ""
+        isRead = dict["isRead"] as? Bool ?? false
         
         if createdDate != "" {
             let formattor = DateFormatter()

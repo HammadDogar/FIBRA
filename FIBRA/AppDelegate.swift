@@ -4,7 +4,6 @@
 //
 //  Created by Muhammad Hassan Ilyas on 28/11/2020.
 //
-
 import UIKit
 import SVProgressHUD
 import Firebase
@@ -13,7 +12,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    var badgeNumber:Int = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,39 +20,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Messaging.messaging().delegate = self
         registerForPushNotifications()
         
-        
-        
-        
-        
         SVProgressHUD.setDefaultMaskType(.none)
         SVProgressHUD.setDefaultAnimationType(.flat)
-        
         return true
     }
     
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
+        completionHandler([.alert, .sound, .badge])
         
         print(notification.request.content.userInfo)
-        
-        
     }
+    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         // notification
         
         let info = response.notification.request.content.userInfo
-        print(badgeNumber)
-        badgeNumber = badgeNumber + 1
-        UIApplication.shared.applicationIconBadgeNumber = badgeNumber
         
         var transactionId = 0
         if let notificationData = info[AnyHashable("transactionId")] as? String{
             print(notificationData)
             transactionId = Int(notificationData)!
         }
-
         
         if let topNavController = self.window?.rootViewController as? UINavigationController {
              
@@ -88,12 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //                    topVC.navigationController?.popToRootViewController(animated: false)
 //
 //                    topVC.navigationController?.pushViewController(reciptVC, animated: false    )
-                   
-                    
                 }
-                
-                
-               
             } else {
                 // Fallback on earlier versions
             }
@@ -107,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 public extension UIApplication {
     class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        
+        print("getTopViewController")
 
         if let nav = base as? UINavigationController {
             return getTopViewController(base: nav.visibleViewController)
@@ -125,11 +111,14 @@ public extension UIApplication {
 // Register push notification
 extension AppDelegate {
     func registerForPushNotifications() {
+        
+        print("registerForPushNotifications")
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if granted {
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
+                    
                 }
             }
         }
@@ -140,6 +129,9 @@ extension AppDelegate {
 // Message Delegate
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        
+        print("didReceiveRegistrationToken")
+
         if fcmToken != "" {
             print("FCM Token: \(fcmToken)")
             UserDefaults.standard.set(fcmToken, forKey: "FCMToken")

@@ -13,19 +13,13 @@ class ReciptVC: UIViewController {
     
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    var transactionId:Int = 0
-    
-//    var totalIndex:Int = 0
-    
-    var viewModel: ReciptViewModel!
-    var refreshControl = UIRefreshControl()
-    
-    var shouldPerfoamNotificationAction = false
-    
-    
     @IBOutlet weak var apiErrorView: UIView!
     @IBOutlet weak var apiErrorLabel: UILabel!
+    
+    var transactionId:Int = 0
+    var viewModel: ReciptViewModel!
+    var refreshControl = UIRefreshControl()
+    var shouldPerfoamNotificationAction = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +139,14 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
         let item = (viewModel.sectionReceipt[key]?[indexPath.row])
         cell.titleLbl.text = item?.vendorName ?? ""
         cell.qrNumberLbl.text = "\(item?.netAmount ?? 0)"
-
+        
+        //chnaged from == 0 to this
+        if item?.isRead ?? false{
+            cell.redDotImage.isHidden = false
+        }
+        else{
+            cell.redDotImage.isHidden = true
+        }
 
         let year = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("yyyy"))
         let monthAndDay = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("d MMM"))
@@ -168,6 +169,12 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
         let item = (viewModel.sectionReceipt[key]?[indexPath.row])
         let vc = ImagePreviewVC.instantiate(fromAppStoryboard: .Main)
         vc.urlString = "http://\(item?.receiptUrl ?? "")"
+               
+        // if commented
+//        if item!.isRead as Int == 0{
+                    vc.transactionId = item!.transactionId as Int
+            print(item!.transactionId as Int)
+//        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

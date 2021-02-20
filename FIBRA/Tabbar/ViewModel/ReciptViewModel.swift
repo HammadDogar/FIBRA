@@ -17,6 +17,8 @@ class ReciptViewModel: NSObject {
     var delegate: ReciptViewModelDelegate?
     var viewController: UIViewController!
     
+    var unread = 0
+    
     var recipts: [Recipt] = []
     var sectionReceipt: [String:[Recipt]] = [String:[Recipt]]()
     var sectionKeys: [String] = [String]()
@@ -24,6 +26,16 @@ class ReciptViewModel: NSObject {
     var totalRecipts: Int {
         return recipts.count
     }
+    
+//    var unreadRecipts: Int {
+//        _ = recipts.filter { (r) -> Bool in
+//            if !r.isRead  {
+//                unread += 1
+//            }
+//            return true
+//        }
+//        return unread
+//    }
     
     func recipt(at index: Int) -> Recipt {
         return recipts[index]
@@ -38,11 +50,22 @@ class ReciptViewModel: NSObject {
         WebManager.shared.getAllRecipt(params: [:]) { (response, error) in
             var isSuccess = false
             var datesCheck:[String] = [String]()
+            print(response)
+            self.unread = 0
             if self.viewController.isValidResponse(response: response, error: error) {
                 let responseDict = response as! [String: Any]
+                print(responseDict)
                 if let responseData = responseDict["data"] as? [[String: Any]] {
                     isSuccess = true
                     self.recipts = responseData.map({Recipt(dict: $0)})
+                    // 20-2 4-26 for badge number
+                    
+                    _ = self.recipts.filter { (recipt) -> Bool in
+                        if !recipt.isRead {
+                            self.unread += 1
+                        }
+                        return true
+                    }
                    let sorted = self.recipts.sorted { (date1, date2) -> Bool in
                         date1.createdDate > date2.createdDate
                     }
@@ -65,6 +88,9 @@ class ReciptViewModel: NSObject {
                         //self.sectionReceipt[key] = value.reversed()
                     }
                     self.delegate?.onSuccess()
+                    print("Count of unread recipts : ---------------- \(self.unread)")
+                    
+                    UIApplication.shared.applicationIconBadgeNumber = self.unread
                 }
             }else if !isSuccess {
                 self.delegate?.onFaild(with: error?.localizedDescription ?? Constants.kSomethingWrong)
