@@ -17,5 +17,7 @@ target 'FIBRA' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   
+  pod 'Firebase/Crashlytics'
+  
   
 end

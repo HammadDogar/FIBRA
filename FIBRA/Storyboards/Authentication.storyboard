@@ -237,7 +237,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="BrN-gV-mKh"/>
                                                     <constraint firstItem="6RD-UX-dGf" firstAttribute="top" secondItem="mGq-Fg-xq8" secondAttribute="top" id="FvN-G5-rZA"/>
@@ -257,7 +257,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="PCs-3E-3iK" firstAttribute="top" secondItem="eyz-LO-Pxb" secondAttribute="top" id="0SZ-tL-dnr"/>
                                                     <constraint firstAttribute="height" constant="30" id="21h-Wv-etR"/>
@@ -277,7 +277,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="vj9-Ct-dVr" firstAttribute="leading" secondItem="sCN-zV-t61" secondAttribute="leading" constant="20" id="66g-71-CB6"/>
                                                     <constraint firstAttribute="height" constant="30" id="IgB-d7-FFO"/>
@@ -297,7 +297,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="8dh-Oz-cKL"/>
                                                     <constraint firstAttribute="trailing" secondItem="MRf-PX-5ab" secondAttribute="trailing" id="Q9a-qQ-nzw"/>
@@ -317,7 +317,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="o5Q-h2-Jp0" secondAttribute="bottom" id="6nR-kf-hnY"/>
                                                     <constraint firstItem="o5Q-h2-Jp0" firstAttribute="top" secondItem="QvE-EH-NSf" secondAttribute="top" id="LUX-LL-NaS"/>
@@ -337,7 +337,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="ZLo-eo-UKC" secondAttribute="trailing" id="CkM-cC-A4I"/>
                                                     <constraint firstItem="ZLo-eo-UKC" firstAttribute="leading" secondItem="RxP-QP-w3P" secondAttribute="leading" constant="20" id="J7A-G1-3Ik"/>
@@ -485,7 +485,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0P-ht-qw8">
-                                <rect key="frame" x="20" y="218" width="374" height="60"/>
+                                <rect key="frame" x="20" y="298" width="374" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gA2-Wi-YuB">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="19.5"/>
@@ -493,7 +493,7 @@
                                         <color key="textColor" name="YellowColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ClY-Tg-YWs">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ClY-Tg-YWs">
                                         <rect key="frame" x="0.0" y="22.5" width="374" height="26.5"/>
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
@@ -537,7 +537,7 @@
                                 <rect key="frame" x="20" y="792" width="374" height="50"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Forgot Password">
+                                <state key="normal" title="Send me recovery link">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -550,10 +550,31 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lle-4j-jax">
-                                <rect key="frame" x="20" y="108" width="374" height="90"/>
+                                <rect key="frame" x="20" y="108" width="374" height="170"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntF-au-gUk" userLabel="enterEmail">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address and we’ll send you a recovery link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xp-RN-ved">
+                                                <rect key="frame" x="10" y="0.0" width="354" height="80"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <viewLayoutGuide key="safeArea" id="W66-cY-dht"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="4Xp-RN-ved" secondAttribute="trailing" constant="10" id="31x-5x-Anu"/>
+                                            <constraint firstItem="4Xp-RN-ved" firstAttribute="centerY" secondItem="ntF-au-gUk" secondAttribute="centerY" id="CuF-ty-ufp"/>
+                                            <constraint firstAttribute="height" constant="80" id="c8N-x3-f2g"/>
+                                            <constraint firstItem="4Xp-RN-ved" firstAttribute="leading" secondItem="ntF-au-gUk" secondAttribute="leading" constant="10" id="etu-1Y-e8Z"/>
+                                            <constraint firstItem="4Xp-RN-ved" firstAttribute="top" secondItem="ntF-au-gUk" secondAttribute="top" id="h3E-wP-G28"/>
+                                            <constraint firstAttribute="bottom" secondItem="4Xp-RN-ved" secondAttribute="bottom" id="tO9-eQ-t38"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbE-Eq-a5R" userLabel="emailValid">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="80" width="374" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Email address is required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odx-sD-8nx">
                                                 <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -562,7 +583,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Odx-sD-8nx" firstAttribute="leading" secondItem="DbE-Eq-a5R" secondAttribute="leading" constant="20" id="FoQ-Wy-yP1"/>
                                             <constraint firstItem="Odx-sD-8nx" firstAttribute="top" secondItem="DbE-Eq-a5R" secondAttribute="top" id="NYc-CA-cqV"/>
@@ -573,7 +594,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5L-0k-i4d" userLabel="email">
-                                        <rect key="frame" x="0.0" y="30" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="110" width="374" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Email address is not valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRH-Ke-PcK">
                                                 <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -582,7 +603,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="73Y-QC-pn8"/>
                                             <constraint firstAttribute="bottom" secondItem="PRH-Ke-PcK" secondAttribute="bottom" id="M8k-iG-teU"/>
@@ -593,7 +614,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28k-qG-Sol" userLabel="ApiErrorView">
-                                        <rect key="frame" x="0.0" y="60" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="140" width="374" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Email address is required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYq-WK-cwR">
                                                 <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -602,7 +623,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="IYq-WK-cwR" firstAttribute="leading" secondItem="28k-qG-Sol" secondAttribute="leading" constant="20" id="3F9-SA-RDN"/>
                                             <constraint firstAttribute="trailing" secondItem="IYq-WK-cwR" secondAttribute="trailing" id="ACL-0w-3Ne"/>
@@ -616,7 +637,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email address is not valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPI-v8-zae">
-                                <rect key="frame" x="20" y="287" width="374" height="19.5"/>
+                                <rect key="frame" x="20" y="367" width="374" height="19.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                 <color key="textColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -967,10 +988,13 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCi-by-zFh">
-                                                        <rect key="frame" x="37" y="0.0" width="337" height="50"/>
+                                                        <rect key="frame" x="42" y="0.0" width="332" height="50"/>
+                                                        <connections>
+                                                            <action selector="onClickTermsButton:" destination="Ppe-d5-vRx" eventType="touchUpInside" id="Itj-vx-r9r"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o5-US-BeS">
-                                                        <rect key="frame" x="37" y="2" width="227" height="46.5"/>
+                                                        <rect key="frame" x="42" y="2" width="222" height="46.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="I accept FIBRA ">
                                                                 <attributes>
@@ -994,7 +1018,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="7o5-US-BeS" secondAttribute="trailing" constant="110" id="8mX-Ue-wMZ"/>
-                                                    <constraint firstItem="7o5-US-BeS" firstAttribute="leading" secondItem="YJY-JJ-ms8" secondAttribute="trailing" constant="-3" id="EsM-hB-Jth"/>
+                                                    <constraint firstItem="7o5-US-BeS" firstAttribute="leading" secondItem="YJY-JJ-ms8" secondAttribute="trailing" constant="2" id="EsM-hB-Jth"/>
                                                     <constraint firstItem="7o5-US-BeS" firstAttribute="centerY" secondItem="Svg-gP-RCu" secondAttribute="centerY" id="FhX-vB-VGG"/>
                                                     <constraint firstItem="YJY-JJ-ms8" firstAttribute="top" secondItem="7o5-US-BeS" secondAttribute="top" constant="-5" id="VcG-vq-Bfu"/>
                                                     <constraint firstItem="YJY-JJ-ms8" firstAttribute="leading" secondItem="Svg-gP-RCu" secondAttribute="leading" id="Vf1-N4-CTi"/>
@@ -1066,7 +1090,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="0.20826198630136986" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="meh-hK-4Z7" secondAttribute="trailing" id="3U0-YX-4Pm"/>
                                                     <constraint firstAttribute="height" constant="30" id="OvE-dE-xvg"/>
@@ -1086,7 +1110,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="vYo-AF-87q" firstAttribute="leading" secondItem="uI7-A1-q4B" secondAttribute="leading" constant="20" id="0l0-vw-4Mh"/>
                                                     <constraint firstAttribute="height" constant="30" id="FfA-Hy-hD5"/>
@@ -1106,7 +1130,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="LfZ-NP-HKU"/>
                                                     <constraint firstItem="urk-9C-Irb" firstAttribute="top" secondItem="Sxu-5a-sVd" secondAttribute="top" id="MEC-zX-las"/>
@@ -1126,7 +1150,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Woa-xh-JAj" firstAttribute="centerY" secondItem="zEP-Gp-LtE" secondAttribute="centerY" id="QrL-a4-sQX"/>
                                                     <constraint firstAttribute="height" constant="30" id="cZm-K6-gPL"/>
@@ -1146,7 +1170,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="vAH-Vu-FVd" firstAttribute="leading" secondItem="8EV-4a-STg" secondAttribute="leading" constant="20" id="1NT-8w-9kP"/>
                                                     <constraint firstAttribute="bottom" secondItem="vAH-Vu-FVd" secondAttribute="bottom" id="odC-JH-PP7"/>
@@ -1166,7 +1190,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="3m6-Fp-hJH" secondAttribute="bottom" id="8R1-ak-irm"/>
                                                     <constraint firstItem="3m6-Fp-hJH" firstAttribute="leading" secondItem="BgS-09-KNF" secondAttribute="leading" constant="20" id="E0z-3T-dFl"/>
@@ -1186,7 +1210,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Ev9-Co-SZk" firstAttribute="top" secondItem="Vzw-a9-bGN" secondAttribute="top" id="2xK-2j-1Zs"/>
                                                     <constraint firstAttribute="height" constant="30" id="Aby-j4-YTn"/>
@@ -1206,7 +1230,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="W53-DG-elI" firstAttribute="top" secondItem="ZIO-7c-ZId" secondAttribute="top" id="C5d-6m-grC"/>
                                                     <constraint firstAttribute="trailing" secondItem="W53-DG-elI" secondAttribute="trailing" id="CHe-1r-SOW"/>
@@ -1226,7 +1250,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="7gg-yF-xBn" firstAttribute="leading" secondItem="BzT-E8-xDE" secondAttribute="leading" constant="20" id="71N-Jp-SHk"/>
                                                     <constraint firstAttribute="bottom" secondItem="7gg-yF-xBn" secondAttribute="bottom" id="EBV-6T-aOS"/>
@@ -1367,6 +1391,7 @@
                         <outlet property="nameLabel" destination="gDF-TB-use" id="qSR-FF-zM7"/>
                         <outlet property="nameLineView" destination="P7i-7t-cb9" id="TIG-Ep-nDo"/>
                         <outlet property="nameText" destination="3xy-fg-gc8" id="Ptq-Mt-gnv"/>
+                        <outlet property="onClickTermsButton" destination="tCi-by-zFh" id="fhG-M7-hDQ"/>
                         <outlet property="passwordErrorView" destination="8EV-4a-STg" id="B2G-cG-Z9J"/>
                         <outlet property="passwordLabel" destination="Ly5-e6-x42" id="ixk-uF-9Cp"/>
                         <outlet property="passwordLineView" destination="I6f-gh-mkc" id="0CX-9p-Beg"/>
@@ -1431,10 +1456,31 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EVA-OG-RNZ">
-                                        <rect key="frame" x="20" y="81" width="374" height="150"/>
+                                        <rect key="frame" x="20" y="81" width="374" height="180"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owv-V4-IzJ" userLabel="email">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tA2-cZ-exM" userLabel="email">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Your email to reset the password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKU-Oh-TCs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="yKT-sr-oRK"/>
+                                                <color key="backgroundColor" red="0.76078431372549016" green="0.89411764705882346" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="VKU-Oh-TCs" firstAttribute="leading" secondItem="tA2-cZ-exM" secondAttribute="leading" id="Ekx-DH-7qY"/>
+                                                    <constraint firstAttribute="height" constant="30" id="FRz-zM-1KU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="VKU-Oh-TCs" secondAttribute="bottom" id="gad-jM-iYC"/>
+                                                    <constraint firstItem="VKU-Oh-TCs" firstAttribute="centerY" secondItem="tA2-cZ-exM" secondAttribute="centerY" id="jhr-qF-PEQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="VKU-Oh-TCs" secondAttribute="trailing" id="n06-Jl-0yI"/>
+                                                    <constraint firstItem="VKU-Oh-TCs" firstAttribute="top" secondItem="tA2-cZ-exM" secondAttribute="top" id="vap-z5-tmn"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owv-V4-IzJ" userLabel="email">
+                                                <rect key="frame" x="0.0" y="30" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Email address is required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1o-9P-3sT">
                                                         <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -1443,7 +1489,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="6ZQ-hv-tub"/>
                                                     <constraint firstItem="c1o-9P-3sT" firstAttribute="top" secondItem="owv-V4-IzJ" secondAttribute="top" id="BTx-tA-heK"/>
@@ -1454,7 +1500,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhH-nf-ujn" userLabel="emailFormat">
-                                                <rect key="frame" x="0.0" y="30" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="60" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Email address is not valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJ4-hy-8xw">
                                                         <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -1463,7 +1509,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="EJ4-hy-8xw" secondAttribute="trailing" id="DHh-na-GRO"/>
                                                     <constraint firstItem="EJ4-hy-8xw" firstAttribute="top" secondItem="XhH-nf-ujn" secondAttribute="top" id="SUd-5D-I7a"/>
@@ -1474,7 +1520,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMw-cU-Y2V" userLabel="pass">
-                                                <rect key="frame" x="0.0" y="60" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="90" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Password is Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJR-6E-2M9">
                                                         <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -1483,7 +1529,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="VJR-6E-2M9" secondAttribute="bottom" id="641-c2-HKb"/>
                                                     <constraint firstAttribute="trailing" secondItem="VJR-6E-2M9" secondAttribute="trailing" id="EwR-mc-0Tv"/>
@@ -1494,7 +1540,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iu1-Ol-4CX" userLabel="passFormat">
-                                                <rect key="frame" x="0.0" y="90" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="120" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Password format is invalid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7Q-hk-Xu5">
                                                         <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -1503,7 +1549,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="k7Q-hk-Xu5" firstAttribute="leading" secondItem="Iu1-Ol-4CX" secondAttribute="leading" constant="20" id="05r-9K-uVX"/>
                                                     <constraint firstAttribute="trailing" secondItem="k7Q-hk-Xu5" secondAttribute="trailing" id="2F9-aV-Dmc"/>
@@ -1514,7 +1560,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gs4-lv-yUh" userLabel="apiErroMessage">
-                                                <rect key="frame" x="0.0" y="120" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="150" width="374" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Password format is invalid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvl-xB-UwR">
                                                         <rect key="frame" x="20" y="0.0" width="354" height="30"/>
@@ -1523,7 +1569,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="0.20826198630000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.88627450980392153" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Vvl-xB-UwR" firstAttribute="centerY" secondItem="gs4-lv-yUh" secondAttribute="centerY" id="RGL-Lp-XH7"/>
                                                     <constraint firstItem="Vvl-xB-UwR" firstAttribute="leading" secondItem="gs4-lv-yUh" secondAttribute="leading" constant="20" id="S7w-Jj-MmK"/>
@@ -1537,7 +1583,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="O9v-Ed-vtV">
-                                        <rect key="frame" x="20" y="261" width="374" height="204"/>
+                                        <rect key="frame" x="20" y="291" width="374" height="204"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Yk-ipV">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -1669,7 +1715,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mY-OS-qZF" customClass="GradientBackGroundOrange" customModule="FIBRA" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="515" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="545" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius1">
@@ -1678,7 +1724,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJR-YF-v2W">
-                                        <rect key="frame" x="20" y="515" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="545" width="374" height="50"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="X6X-Sp-SUF"/>
@@ -1697,7 +1743,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6M-s1-IXl">
-                                        <rect key="frame" x="20" y="580" width="374" height="45"/>
+                                        <rect key="frame" x="20" y="610" width="374" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="P6Y-gF-tyB"/>
                                         </constraints>
@@ -1826,6 +1872,7 @@ Cg
                         <outlet property="emailAddressLabel" destination="hPw-rV-xwq" id="fFQ-Qf-zH9"/>
                         <outlet property="emailErrorView" destination="owv-V4-IzJ" id="eHx-W3-4Yl"/>
                         <outlet property="emailLineView" destination="sBs-Td-N8N" id="NFU-fx-NFg"/>
+                        <outlet property="emailSentView" destination="tA2-cZ-exM" id="ja4-jv-9lq"/>
                         <outlet property="emailValidErrorView" destination="aJU-sx-xaj" id="bUD-TC-NZO"/>
                         <outlet property="emailValidTopErrorView" destination="XhH-nf-ujn" id="bWR-Es-1VR"/>
                         <outlet property="passwordErrorView" destination="BMw-cU-Y2V" id="rH8-r4-zns"/>
@@ -1871,6 +1918,9 @@ Cg
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

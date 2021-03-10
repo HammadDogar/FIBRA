@@ -9,17 +9,22 @@ import UIKit
 import SVProgressHUD
 import WebKit
 
-class ImagePreviewVC: UIViewController {
+class ImagePreviewVC: UIViewController{
+
     
     @IBOutlet var webView: WKWebView!
     
     var transactionId = 0
+    var viewModel: ReciptViewModel!
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     var urlString: String!
+    var vendorName: String!
+    var date: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        activityIndicatorView.color = .gray
         activityIndicatorView.isHidden = true
         // Do any additional setup after loading the view.
@@ -28,6 +33,8 @@ class ImagePreviewVC: UIViewController {
             SVProgressHUD.show()
 //            activityIndicatorView.startAnimating()
             webView.load(URLRequest(url: url))
+            
+
         }
         self.ReadTransaction()
         
@@ -103,11 +110,29 @@ class ImagePreviewVC: UIViewController {
     }
     
     @IBAction func shareAction(_ sender: UIButton) {
-        if let url = URL(string: urlString) {
-            let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        
+        
+        
+//        let year = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("d MMM, yyyy"))
+        var dateString = ""
+        if date != "" {
+            if let dateObj = date.date(with: DateFormateStyle.DATE_TIME_FORMAT_ISO8601) {
+                dateString = dateObj.string(with: DateFormateStyle.custom("d MMM, yyyy"))
+            }
+        }
+        
+        
+        let sendStr = vendorName + " reciept - " + dateString
+
+//        let text2 = "reciept -"
+//        let text = vendorName
+            if let url = URL(string: urlString)
+            {let activityController = UIActivityViewController(activityItems: [sendStr , url], applicationActivities: nil)
             self.present(activityController, animated: true, completion: nil)
         }
     }
+    
+
 
     @IBAction func navigateBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

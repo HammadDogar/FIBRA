@@ -17,6 +17,8 @@ enum ApiMethods: String {
     case updateProfile = "Users/UpdateUserProfile"
     case updateImage = "Users/UploadFile"
     case ReadRecipt = "Transaction/ReadTransaction"
+    // 25.
+    case removeFcmToken = "Notification/RemoveFcmDeviceToken"
 
 }
 

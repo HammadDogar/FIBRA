@@ -53,7 +53,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var rePasswordLineView: UIView!
     @IBOutlet weak var apiErrorView: UIView!
     @IBOutlet weak var apiErrorLabel: UILabel!
-
+    
+    @IBOutlet weak var onClickTermsButton: UIButton!
+    
+    
 
     
     var viewModel: AuthenticationViewModel!
@@ -196,10 +199,19 @@ class RegisterViewController: UIViewController {
         }
         self.textFieldDidChange(self.emailText)
     }
-    
+
     @IBAction func onRegister(_ sender: UIButton) {
         signUp()
     }
+    
+    
+    @IBAction func onClickTermsButton(_ sender: UIButton){
+        
+        let vc = TermsVC.instantiate(fromAppStoryboard: .Main)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     
 }
 

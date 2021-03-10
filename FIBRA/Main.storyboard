@@ -578,14 +578,114 @@
             </objects>
             <point key="canvasLocation" x="5386.9565217391309" y="491.51785714285711"/>
         </scene>
+        <!--TermsVC-->
+        <scene sceneID="CHL-gO-aOI">
+            <objects>
+                <viewController storyboardIdentifier="TermsVC" hidesBottomBarWhenPushed="YES" id="NQK-Ns-0IM" customClass="TermsVC" customModule="FIBRA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="bc1-Tp-zON">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuB-0w-OgG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-pS-8UA">
+                                <rect key="frame" x="40" y="303" width="334" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rY4-zn-hOA">
+                                        <rect key="frame" x="10" y="20" width="314" height="29"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" name="Base"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="DxR-44-q3h">
+                                        <rect key="frame" x="5" y="57" width="324" height="186"/>
+                                        <string key="text">This terms of use governs your use of our application FIBRA ; by using our application, you accept this terms of use in full. If you disagree with any part of this terms of use, you must not use: our application. Unless otherwise stated, we or our licensors own the intellectual property rights in this application and all material in the application. Subject to this all intellectual property rights-are reserved.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHQ-VC-P1O">
+                                        <rect key="frame" x="80" y="257" width="174" height="33"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" name="Base"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="Base"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius1">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onDone:" destination="NQK-Ns-0IM" eventType="touchUpInside" id="vEZ-vi-ouq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oHQ-VC-P1O" secondAttribute="trailing" constant="80" id="0dN-7C-OXD"/>
+                                    <constraint firstItem="DxR-44-q3h" firstAttribute="centerY" secondItem="Ydp-pS-8UA" secondAttribute="centerY" id="2mu-7a-HXN"/>
+                                    <constraint firstItem="DxR-44-q3h" firstAttribute="leading" secondItem="Ydp-pS-8UA" secondAttribute="leading" constant="5" id="6hO-hC-7Lg"/>
+                                    <constraint firstAttribute="bottom" secondItem="oHQ-VC-P1O" secondAttribute="bottom" constant="10" id="GIi-rn-Ygz"/>
+                                    <constraint firstItem="oHQ-VC-P1O" firstAttribute="leading" secondItem="Ydp-pS-8UA" secondAttribute="leading" constant="80" id="J5J-iG-4mU"/>
+                                    <constraint firstItem="rY4-zn-hOA" firstAttribute="top" secondItem="Ydp-pS-8UA" secondAttribute="top" constant="20" id="LYz-XU-JcL"/>
+                                    <constraint firstAttribute="height" constant="300" id="RbX-2r-5kX"/>
+                                    <constraint firstItem="rY4-zn-hOA" firstAttribute="leading" secondItem="Ydp-pS-8UA" secondAttribute="leading" constant="10" id="c4k-QQ-EUU"/>
+                                    <constraint firstItem="DxR-44-q3h" firstAttribute="top" secondItem="rY4-zn-hOA" secondAttribute="bottom" constant="8" symbolic="YES" id="faz-nF-yqn"/>
+                                    <constraint firstItem="oHQ-VC-P1O" firstAttribute="top" secondItem="DxR-44-q3h" secondAttribute="bottom" constant="14" id="gSd-fh-aHn"/>
+                                    <constraint firstAttribute="trailing" secondItem="rY4-zn-hOA" secondAttribute="trailing" constant="10" id="hY0-7h-D6W"/>
+                                    <constraint firstAttribute="trailing" secondItem="DxR-44-q3h" secondAttribute="trailing" constant="5" id="n7t-e5-sYC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius1">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="raF-iI-KCM"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ydp-pS-8UA" firstAttribute="centerY" secondItem="raF-iI-KCM" secondAttribute="centerY" id="1lS-aV-OYX"/>
+                            <constraint firstItem="raF-iI-KCM" firstAttribute="trailing" secondItem="Ydp-pS-8UA" secondAttribute="trailing" constant="40" id="Chp-Dk-mfB"/>
+                            <constraint firstItem="Ydp-pS-8UA" firstAttribute="leading" secondItem="raF-iI-KCM" secondAttribute="leading" constant="40" id="HHY-rO-dWp"/>
+                            <constraint firstItem="HuB-0w-OgG" firstAttribute="trailing" secondItem="raF-iI-KCM" secondAttribute="trailing" id="TNQ-Y3-InW"/>
+                            <constraint firstAttribute="bottom" secondItem="HuB-0w-OgG" secondAttribute="bottom" id="c1a-xu-jHM"/>
+                            <constraint firstItem="HuB-0w-OgG" firstAttribute="leading" secondItem="raF-iI-KCM" secondAttribute="leading" id="hSi-rY-Rym"/>
+                            <constraint firstItem="HuB-0w-OgG" firstAttribute="top" secondItem="bc1-Tp-zON" secondAttribute="top" id="xY4-dD-DAn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3YF-tV-9Qi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6108.6956521739139" y="491.51785714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btnShare" width="21.333333969116211" height="21.333333969116211"/>
         <image name="leftArrow" width="50" height="50"/>
         <image name="logoutRed" width="111" height="111"/>
+        <namedColor name="Base">
+            <color red="0.18000000715255737" green="0.63099998235702515" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="YellowColor">
             <color red="0.93725490196078431" green="0.69803921568627447" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

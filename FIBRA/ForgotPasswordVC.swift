@@ -77,7 +77,7 @@ extension ForgotPasswordVC: AuthenticationViewModelDelegate {
     func onFaild(with error: String) {
         SVProgressHUD.dismiss()
         self.view.isUserInteractionEnabled = true
-            self.apiErrorLabel.text = "User not exists"
+            self.apiErrorLabel.text = "User does not exist"
             self.apiErrorView.isHidden = false
 //        self.showAlertView(title: Constants.kErrorMessage, message: error)
     }
@@ -86,6 +86,7 @@ extension ForgotPasswordVC: AuthenticationViewModelDelegate {
         SVProgressHUD.dismiss()
         self.view.isUserInteractionEnabled = true
         self.apiErrorView.isHidden = true
+        Global.shared.updatedStatus = true
 //        self.showAlertView(title: "Success", message: "Instruction for reseting password are send on your email adress please check your email. Thanks", successTitle: "Ok", cancelTitle: "", successCallback:  {
             self.navigationController?.popViewController(animated: true)
 //        })

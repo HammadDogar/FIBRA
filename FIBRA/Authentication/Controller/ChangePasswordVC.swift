@@ -134,6 +134,8 @@ class ChangePasswordVC: UIViewController {
                 self.apiErrorLabel.text = "The internet connection appears to be offline."
                 self.apiErrorView.isHidden = false
                 
+                
+                
             }
         }
     }

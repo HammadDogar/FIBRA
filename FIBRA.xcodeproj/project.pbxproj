@@ -45,6 +45,7 @@
 		E773D3FF2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */; };
 		E77459FC259E0C8C0039A318 /* Breachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77459FB259E0C8C0039A318 /* Breachability.swift */; };
 		E7AF523B258B732F00DF905F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF523A258B732F00DF905F /* SplashViewController.swift */; };
+		E7D7386F25F7A7500090FE83 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7386E25F7A7500090FE83 /* TermsVC.swift */; };
 		E7EFA033258A240C00D24B83 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFA032258A240C00D24B83 /* Global.swift */; };
 		E7F5BDCC25DA96FF0054F8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F5BDCB25DA96FF0054F8C2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E77459FB259E0C8C0039A318 /* Breachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breachability.swift; sourceTree = "<group>"; };
 		E7AF523A258B732F00DF905F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		E7D7386E25F7A7500090FE83 /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		E7EFA032258A240C00D24B83 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		E7F5BDCB25DA96FF0054F8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7F5BDD525DA9FC20054F8C2 /* FIBRA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIBRA.entitlements; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				3378617F25728BC80032EC6D /* InfoVC.swift */,
 				3378618325728BD60032EC6D /* LogoutVC.swift */,
 				3378618625728BE40032EC6D /* ImagePreviewVC.swift */,
+				E7D7386E25F7A7500090FE83 /* TermsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				33AD263925724A310020BA21 /* Frameworks */,
 				33AD263A25724A310020BA21 /* Resources */,
 				F3943FAA89C6AC46114B14FB /* [CP] Embed Pods Frameworks */,
+				E7FE16B625EFAB5B0092AD73 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -414,6 +418,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E7FE16B625EFAB5B0092AD73 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		F3943FAA89C6AC46114B14FB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,6 +478,7 @@
 				33AD268325724B310020BA21 /* ReciptVC.swift in Sources */,
 				33AD267A25724B1D0020BA21 /* LoginData.swift in Sources */,
 				33AD268425724B310020BA21 /* MyProfileVC.swift in Sources */,
+				E7D7386F25F7A7500090FE83 /* TermsVC.swift in Sources */,
 				33BCEE742572DCC000E7ECAF /* UpdateProfileViewModel.swift in Sources */,
 				E7EFA033258A240C00D24B83 /* Global.swift in Sources */,
 				33AD264025724A310020BA21 /* AppDelegate.swift in Sources */,
@@ -521,7 +545,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

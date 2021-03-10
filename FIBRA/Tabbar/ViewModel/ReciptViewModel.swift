@@ -11,6 +11,7 @@ protocol ReciptViewModelDelegate {
 }
 
 import UIKit
+import SVProgressHUD
 
 class ReciptViewModel: NSObject {
     
@@ -46,11 +47,15 @@ class ReciptViewModel: NSObject {
         self.delegate = delegate
     }
     
-    func getAllRecipts() {
+    func getAllRecipts(isLoader:Bool = false) {
+        if isLoader {
+            SVProgressHUD.show()
+        }
+        
         WebManager.shared.getAllRecipt(params: [:]) { (response, error) in
             var isSuccess = false
             var datesCheck:[String] = [String]()
-            print(response)
+            print(response as Any)
             self.unread = 0
             if self.viewController.isValidResponse(response: response, error: error) {
                 let responseDict = response as! [String: Any]
@@ -90,7 +95,7 @@ class ReciptViewModel: NSObject {
                     self.delegate?.onSuccess()
                     print("Count of unread recipts : ---------------- \(self.unread)")
                     
-                    UIApplication.shared.applicationIconBadgeNumber = self.unread
+                   // UIApplication.shared.applicationIconBadgeNumber = self.unread
                 }
             }else if !isSuccess {
                 self.delegate?.onFaild(with: error?.localizedDescription ?? Constants.kSomethingWrong)

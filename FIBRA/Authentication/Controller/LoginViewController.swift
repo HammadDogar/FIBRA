@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
+    @IBOutlet weak var emailSentView: UIView!
     
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -45,8 +46,8 @@ class LoginViewController: UIViewController {
 //        self.btnBackGroundColorView.isHidden = true
 //        self.btnLogin.isEnabled = false
         
-        userText.text = "hassan@getnada.com"
-        passwordText.text = "Abc@123456"
+//        userText.text = "hassan@getnada.com"
+//        passwordText.text = "Abc@123456"
         
         self.btnNewPassword.setTitle(" Show", for: .normal)
         self.btnNewPassword.setTitle(" Hide", for: .selected)
@@ -63,6 +64,8 @@ class LoginViewController: UIViewController {
         self.passwordText.addTarget(self, action: #selector(ChangePasswordVC.textFieldDidChange(_:)),
                                     for: .editingChanged)
     }
+    
+    
     
     func configureErrorViews(){
         self.emailErrorView.isHidden = true
@@ -103,6 +106,15 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        if Global.shared.updatedStatus{
+            Global.shared.updatedStatus = false
+            self.emailSentView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now()+6) {
+                self.emailSentView.isHidden = true
+            }
+        }else{
+            self.emailSentView.isHidden = true
+        }
     }
     @IBAction func actionNewPassWordShow(_ sender: UIButton) {
         self.btnNewPassword.isSelected.toggle()

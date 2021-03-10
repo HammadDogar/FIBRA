@@ -53,6 +53,8 @@ class MyProfileVC: UIViewController {
         let vc = LogoutVC.instantiate(fromAppStoryboard: .Main)
         vc.modalPresentationStyle = .overCurrentContext
         self.tabBarController?.present(vc, animated: true, completion: nil)
+        ///
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
 }
@@ -60,7 +62,7 @@ class MyProfileVC: UIViewController {
 extension MyProfileVC {
     func setData() {
         userNameLbl.text = LoginData.shared.fullName
-        custumerNoLbl.text = "Customer No.: \(LoginData.shared.userId)"//"Fibra-User-000-\(LoginData.shared.userId)"
+        custumerNoLbl.text = "Fibra ID: \(LoginData.shared.userId)"//"Fibra-User-000-\(LoginData.shared.userId)"
         mobileNumber.text = "Mobile No: \(LoginData.shared.phone)"
         email.text = "Email: \(LoginData.shared.authDict.email)"
 //        if LoginData.shared.profileUrl != ""{

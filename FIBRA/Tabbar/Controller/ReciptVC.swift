@@ -23,47 +23,66 @@ class ReciptVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //05-03
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshFromNoti), name: NSNotification.Name("refreshReceipts"), object: nil)
+        
+        errorLbl.isHidden = true
         self.tableView.register(UINib(nibName: "ReceiptTableViewCell", bundle: nil), forCellReuseIdentifier: "ReceiptTableViewCell")
         viewModel = ReciptViewModel(delegate: self, viewController: self)
         if BReachability.isConnectedToNetwork(){
             self.apiErrorView.isHidden = true
-
+            viewModel.getAllRecipts(isLoader: true)
         }else{
             self.apiErrorLabel.text = "The internet connection appears to be offline."
             self.apiErrorView.isHidden = false
         }
         self.tableView.rowHeight = 85.0
-
+        //05-03
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         self.tableView.addSubview(refreshControl)
      }
-
+    //05-03
+    @objc func refreshFromNoti() {
+        viewModel.getAllRecipts(isLoader: true)
+    }
+    //05-03
      @objc func refresh(_ sender: AnyObject) {
         if BReachability.isConnectedToNetwork(){
             self.apiErrorView.isHidden = true
-            viewModel.getAllRecipts()
+            viewModel.getAllRecipts(isLoader:false)
 
         }else{
             self.refreshControl.endRefreshing()
             self.apiErrorLabel.text = "Unable to Refresh, Internet connection appears to be offline."
             self.apiErrorView.isHidden = false
+            
+            
         }
      }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.tintColor = UIColor.init(named: "Base")
         self.navigationController?.isNavigationBarHidden = true
-        
+        //05-03
         viewModel.getAllRecipts()
     }
+    
+//    @objc func methodOfReceivedNotification(notification:NSNotification){
+//        print("hello")
+//    }
 }
 
 extension ReciptVC: ReciptViewModelDelegate {
     func onSuccess() {
+        SVProgressHUD.dismiss()
         self.refreshControl.endRefreshing()
         tableView.reloadData()
+        //05-03
         errorLbl.isHidden = viewModel.totalRecipts > 0 ? true : false
+        
         
         if shouldPerfoamNotificationAction {
             getImageIndex(transactionId:transactionId)
@@ -74,6 +93,7 @@ extension ReciptVC: ReciptViewModelDelegate {
     func onFaild(with error: String) {
         SVProgressHUD.dismiss()
         self.refreshControl.endRefreshing()
+        errorLbl.isHidden = viewModel.totalRecipts > 0 ? true : false
 //        self.showAlertView(title: Constants.kErrorMessage, message: error)
     }
 }
@@ -137,15 +157,16 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
         let recipt = viewModel.recipt(at: indexPath.row)
         let key = viewModel.sectionKeys[indexPath.section]
         let item = (viewModel.sectionReceipt[key]?[indexPath.row])
+        
         cell.titleLbl.text = item?.vendorName ?? ""
         cell.qrNumberLbl.text = "\(item?.netAmount ?? 0)"
         
         //chnaged from == 0 to this
         if item?.isRead ?? false{
-            cell.redDotImage.isHidden = false
+            cell.redDotImage.isHidden = true
         }
         else{
-            cell.redDotImage.isHidden = true
+            cell.redDotImage.isHidden = false
         }
 
         let year = item!.createdDate.date(with: .DATE_TIME_FORMAT_ISO8601)?.string(with: .custom("yyyy"))
@@ -169,12 +190,13 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
         let item = (viewModel.sectionReceipt[key]?[indexPath.row])
         let vc = ImagePreviewVC.instantiate(fromAppStoryboard: .Main)
         vc.urlString = "http://\(item?.receiptUrl ?? "")"
-               
-        // if commented
-//        if item!.isRead as Int == 0{
-                    vc.transactionId = item!.transactionId as Int
-            print(item!.transactionId as Int)
-//        }
+        vc.vendorName = item?.vendorName ?? ""
+        vc.date = item?.createdDate ?? ""
+        //05-03
+        viewModel.sectionReceipt[key]?[indexPath.row].isRead = true
+
+        vc.transactionId = item!.transactionId as Int
+        print(item!.transactionId as Int)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -193,8 +215,14 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
             
             //let key = viewModel.sectionKeys[0]
             //let item = (viewModel.sectionReceipt[key]?[0])
+            let key = viewModel.sectionKeys[0]
+            let item = (viewModel.sectionReceipt[key]?[0])
             let vc = ImagePreviewVC.instantiate(fromAppStoryboard: .Main)
             vc.urlString = "http://\(reciptUrl)"
+            vc.vendorName = item?.vendorName ?? ""
+            vc.date = item?.createdDate ?? ""
+            vc.transactionId = item!.transactionId as Int
+            print(item!.transactionId as Int)
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else{

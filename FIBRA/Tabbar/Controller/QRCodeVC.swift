@@ -19,7 +19,7 @@ class QRCodeVC: UIViewController {
         UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .selected)
 
         
-        self.fibraUserID.text = "Fibra-User-000-\(LoginData.shared.userId)"
+        self.fibraUserID.text = "\(LoginData.shared.userId)"
     }
     
     override func viewWillAppear(_ animated: Bool) {

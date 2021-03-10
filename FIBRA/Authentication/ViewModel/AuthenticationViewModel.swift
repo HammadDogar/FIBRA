@@ -78,9 +78,11 @@ class AuthenticationViewModel: NSObject {
     
     func forgotPassword(with email: String) {
         let param: [String: Any] = ["email": email]
-        WebManager.shared.forgotPassword(params: param) { (response, error) in
+        print(param)
+        WebManager.shared.forgotPassword(email: email) { (response, error) in
             var isSuccess = false
             if self.viewController.isValidResponse(response: response, error: error) {
+                print(response)
                 isSuccess = true
                 self.delegate?.onSuccess()
             }else if !isSuccess {

@@ -44,8 +44,9 @@ extension WebManager {
         POSTRequest(url: ApiMethods.register.rawValue, parameters: params, completion: completion)
     }
     
-    func forgotPassword(params: Parameters, completion: @escaping RequestCompletion) {
-        POSTRequest(url: ApiMethods.forgotPassword.rawValue, parameters: params, completion: completion)
+    func forgotPassword(email: String, completion: @escaping RequestCompletion) {
+        //POSTRequest(url: ApiMethods.forgotPassword.rawValue, parameters: params, completion: completion)
+        POSTRequestForgotPassword(email: email, completion: completion)
     }
     
     func changePAssword(params: Parameters, completion: @escaping RequestCompletion) {
@@ -54,6 +55,8 @@ extension WebManager {
     
     func updateProfile(params: Parameters, completion: @escaping RequestCompletion) {
         self.POSTRequest(url: ApiMethods.updateProfile.rawValue, parameters: params, completion: completion)
+        
+        
         
     }
     
@@ -125,10 +128,12 @@ extension WebManager {
         
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        print(parameters)
         
         request.httpBody = toJSonString(data: parameters).data(using: .utf8)
         request.httpMethod = "POST"
         manager.request(request).responseJSON { (response) in
+            print(response)
         if response.result.isSuccess {
             completion(response.result.value, nil)
         } else {
@@ -136,6 +141,27 @@ extension WebManager {
             }
         }
     }
+    fileprivate func POSTRequestForgotPassword(email:String, completion: @escaping RequestCompletion) {
+        
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = 50
+        
+        var request = URLRequest(url: URL(string: "http://fibraapi.imedhealth.us/api/Users/ForgotPassword?email=\(email)")!)
+
+        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+
+        request.httpMethod = "POST"
+        manager.request(request).responseJSON { (response) in
+            print(response)
+        if response.result.isSuccess {
+            completion(response.result.value, nil)
+        } else {
+            completion(nil,response.error)
+            }
+        }
+    }
+
     
     fileprivate func GETRequest(url: String, parameters: Parameters, completion: @escaping RequestCompletion) {
         

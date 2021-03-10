@@ -37,8 +37,13 @@ class Recipt: NSObject {
         isRead = dict["isRead"] as? Bool ?? false
         
         if createdDate != "" {
+            
+            let strAry  = createdDate.split(separator: "T")
+            let dateStr = strAry[0]
+            
             let formattor = DateFormatter()
             formattor.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            
             if let date = formattor.date(from: createdDate) {
                 self.creationDate = date
             }else{
