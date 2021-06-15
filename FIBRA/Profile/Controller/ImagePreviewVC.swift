@@ -64,7 +64,7 @@ class ImagePreviewVC: UIViewController{
             print("error")
         }
 //        print(request.httpBody)
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
         
 //        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 //        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")

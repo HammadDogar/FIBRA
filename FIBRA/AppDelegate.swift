@@ -105,9 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         reciptVC.transactionId = transactionId
                         reciptVC.getImageIndex(transactionId:transactionId)
                         
-                        
                         print("done")
-
                         
                         vc1.popToRootViewController(animated: false)
                         vc1.pushViewController(reciptVC, animated: false)
@@ -189,3 +187,4 @@ extension AppDelegate: MessagingDelegate {
         }
     }
 }
+

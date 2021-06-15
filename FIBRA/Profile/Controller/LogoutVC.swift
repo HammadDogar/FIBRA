@@ -36,7 +36,7 @@ class LogoutVC: UIViewController {
         request.httpMethod = "POST"
         
 
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
         
         task = URLSession.shared.dataTask(with: request){(data,response,error) in
             if let error = error{
@@ -73,19 +73,7 @@ class LogoutVC: UIViewController {
     
     @IBAction func onNo(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-     
-        print("hhhhhh")
+        
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

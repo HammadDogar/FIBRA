@@ -17,7 +17,7 @@ class LoginData: NSObject{
     var isAccountVerified = false
     var createdDate = ""
     var vendorId = 0
-    var token = ""
+    var authToken = ""
     var fullName = ""
     var phone = ""
     var address = ""
@@ -25,6 +25,7 @@ class LoginData: NSObject{
     var qrCodeUrl = ""
     var about = ""
     var roleId = 0
+    
     
     var authDict: (email: String, password: String) {
         set(newAuthDict) {
@@ -38,7 +39,7 @@ class LoginData: NSObject{
     }
     
     enum CodingKeys: String, CodingKey {
-        case userId, role, isActive, isAccountVerified, createdDate, vendorId, token, fullName, phone, address, profileUrl, qrCodeUrl, about, roleId, email, password }
+        case userId, role, isActive, isAccountVerified, createdDate, vendorId, authToken, fullName, phone, address, profileUrl, qrCodeUrl, about, roleId, email, password }
     
     static var shared = {
         return LoginData()
@@ -55,7 +56,7 @@ class LoginData: NSObject{
         isAccountVerified = dict["isAccountVerified"] as? Bool ?? false
         createdDate = dict["createdDate"] as? String ?? ""
         vendorId = dict["vendorId"] as? Int ?? 0
-        token = dict["token"] as? String ?? ""
+        authToken = dict["token"] as? String ?? ""
         fullName = dict["fullName"] as? String ?? ""
         phone = dict["phone"] as? String ?? ""
         address = dict["address"] as? String ?? ""
@@ -73,7 +74,7 @@ class LoginData: NSObject{
         isAccountVerified = false
         createdDate = ""
         vendorId = 0
-        token = ""
+        authToken = ""
         fullName = ""
         phone = ""
         address = ""
@@ -92,7 +93,7 @@ class LoginData: NSObject{
         userDefaults.set(isAccountVerified, forKey: CodingKeys.isAccountVerified.rawValue)
         userDefaults.set(createdDate, forKey: CodingKeys.createdDate.rawValue)
         userDefaults.set(vendorId, forKey: CodingKeys.vendorId.rawValue)
-        userDefaults.set(token, forKey: CodingKeys.token.rawValue)
+        userDefaults.set(authToken, forKey: CodingKeys.authToken.rawValue)
         userDefaults.set(fullName, forKey: CodingKeys.fullName.rawValue)
         userDefaults.set(phone, forKey: CodingKeys.phone.rawValue)
         userDefaults.set(address, forKey: CodingKeys.address.rawValue)
@@ -110,7 +111,7 @@ class LoginData: NSObject{
         isAccountVerified = userDefaults.value(forKey: CodingKeys.isAccountVerified.rawValue) as? Bool ?? false
         createdDate = userDefaults.value(forKey: CodingKeys.createdDate.rawValue) as? String ?? ""
         vendorId = userDefaults.value(forKey: CodingKeys.vendorId.rawValue) as? Int ?? 0
-        token = userDefaults.value(forKey: CodingKeys.token.rawValue) as? String ?? ""
+        authToken = userDefaults.value(forKey: CodingKeys.authToken.rawValue) as? String ?? ""
         fullName = userDefaults.value(forKey: CodingKeys.fullName.rawValue) as? String ?? ""
         phone = userDefaults.value(forKey: CodingKeys.phone.rawValue) as? String ?? ""
         address = userDefaults.value(forKey: CodingKeys.address.rawValue) as? String ?? ""

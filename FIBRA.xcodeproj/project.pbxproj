@@ -40,6 +40,7 @@
 		33BCEE742572DCC000E7ECAF /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BCEE732572DCC000E7ECAF /* UpdateProfileViewModel.swift */; };
 		D219FB6935DB220988750F92 /* Pods_FIBRA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CBFBF303878C542CED88E8 /* Pods_FIBRA.framework */; };
 		E713EA8625931097006C7734 /* GradientBackGroundOrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E713EA8525931097006C7734 /* GradientBackGroundOrange.swift */; };
+		E77090B42601E57E00D163B4 /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77090B32601E57E00D163B4 /* VerifyVC.swift */; };
 		E773D3FB2589D7D800D6E33A /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3F92589D7D800D6E33A /* ReceiptTableViewCell.swift */; };
 		E773D3FC2589D7D800D6E33A /* ReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E773D3FA2589D7D800D6E33A /* ReceiptTableViewCell.xib */; };
 		E773D3FF2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */; };
@@ -88,6 +89,7 @@
 		33BCEE732572DCC000E7ECAF /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		4DF306AC22FF6E14C8D886BD /* Pods-FIBRA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIBRA.debug.xcconfig"; path = "Target Support Files/Pods-FIBRA/Pods-FIBRA.debug.xcconfig"; sourceTree = "<group>"; };
 		E713EA8525931097006C7734 /* GradientBackGroundOrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackGroundOrange.swift; sourceTree = "<group>"; };
+		E77090B32601E57E00D163B4 /* VerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
 		E773D3F92589D7D800D6E33A /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		E773D3FA2589D7D800D6E33A /* ReceiptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiptTableViewCell.xib; sourceTree = "<group>"; };
 		E773D3FE2589DCA100D6E33A /* ReceiptHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				33BCEE722572DCA900E7ECAF /* ViewModel */,
 				3378617E25728BAB0032EC6D /* Controller */,
+				E77090B32601E57E00D163B4 /* VerifyVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				E773D3FB2589D7D800D6E33A /* ReceiptTableViewCell.swift in Sources */,
 				E77459FC259E0C8C0039A318 /* Breachability.swift in Sources */,
 				33AD267825724B1D0020BA21 /* LoginViewController.swift in Sources */,
+				E77090B42601E57E00D163B4 /* VerifyVC.swift in Sources */,
 				33AD265D25724A6D0020BA21 /* Extensions.swift in Sources */,
 				3378618C25728F030032EC6D /* ReciptCell.swift in Sources */,
 				33AD266125724A6D0020BA21 /* AppStoryBoard.swift in Sources */,

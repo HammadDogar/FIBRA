@@ -206,10 +206,10 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func onClickTermsButton(_ sender: UIButton){
-        
-        let vc = TermsVC.instantiate(fromAppStoryboard: .Main)
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
+//        
+//        let vc = TermsVC.instantiate(fromAppStoryboard: .Main)
+//        vc.modalPresentationStyle = .overCurrentContext
+//        self.present(vc, animated: true, completion: nil)
     }
     
     

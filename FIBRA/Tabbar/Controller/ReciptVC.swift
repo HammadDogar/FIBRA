@@ -20,7 +20,7 @@ class ReciptVC: UIViewController {
     var viewModel: ReciptViewModel!
     var refreshControl = UIRefreshControl()
     var shouldPerfoamNotificationAction = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //05-03
@@ -43,7 +43,7 @@ class ReciptVC: UIViewController {
      }
     //05-03
     @objc func refreshFromNoti() {
-        viewModel.getAllRecipts(isLoader: true)
+        viewModel.getAllRecipts(isLoader: false)
     }
     //05-03
      @objc func refresh(_ sender: AnyObject) {
@@ -67,7 +67,9 @@ class ReciptVC: UIViewController {
         tabBarController?.tabBar.tintColor = UIColor.init(named: "Base")
         self.navigationController?.isNavigationBarHidden = true
         //05-03
+        
         viewModel.getAllRecipts()
+        
     }
     
 //    @objc func methodOfReceivedNotification(notification:NSNotification){

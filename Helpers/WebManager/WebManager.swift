@@ -127,7 +127,7 @@ extension WebManager {
         print(url)
         
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
         print(parameters)
         
         request.httpBody = toJSonString(data: parameters).data(using: .utf8)
@@ -149,7 +149,7 @@ extension WebManager {
         var request = URLRequest(url: URL(string: "http://fibraapi.imedhealth.us/api/Users/ForgotPassword?email=\(email)")!)
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
 
         request.httpMethod = "POST"
         manager.request(request).responseJSON { (response) in
@@ -183,7 +183,7 @@ extension WebManager {
         
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
         
         manager.request(request).responseJSON { (response) in
             if response.result.isSuccess {
@@ -214,7 +214,7 @@ extension WebManager {
         
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "DELETE"
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
         
         manager.request(request).responseJSON { (response) in
             if response.result.isSuccess {
@@ -235,7 +235,7 @@ extension WebManager {
         print(url)
         
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(LoginData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(LoginData.shared.authToken)", forHTTPHeaderField: "Authorization")
         request.httpBody = toJSonString(data: parameters).data(using: .utf8)
         request.httpMethod = "PUT"
         
